@@ -1,0 +1,109 @@
+.required{
+	color:red;
+	font-weight: bold;
+}
+.error{
+	color:red;
+}
+.unit-table{
+width:50%;
+margin: auto;
+text-align: center;
+}
+.stocktable{
+width:97%;
+margin: auto;
+text-align: center;
+}
+th, td{
+	text-align: center;
+}
+th{
+  background-color: #af772a;
+  font-weight: bold;
+  color: white;
+}
+.iblue{
+color:blue;
+}
+.ired{
+	color: red;
+}
+
+#box{
+  width: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 10px black;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  padding: 10px;
+  text-align: center;
+  display: none;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=file] {
+border-style: none;
+}
+.mul-select{
+            width: 100%;
+        }
+.itembutton{
+  width: 38%;
+  border-radius: 3px;
+}
+.itembutton1{
+  width: 38%;
+  border-radius: 3px;
+  float: right;
+  margin: 3px;
+}
+.inbutton{
+  background-color:#af772a;
+  color:white;
+  width:70%;
+}
+
+
+.modal{
+  display: none;
+  left: 50%;
+  transform: translate(-50%, 3%);
+  width:50%;
+  margin: auto;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #af772a;
+  margin: auto;
+  border: 1px solid #888;
+}
+
+/* The Close Button */
+.close, .bulkclose {
+  color: #aaaaaa;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 95%;
+}
+
+.close:hover, .close:focus, .bulkclose:hover, .close:focus {
+  color: white;
+  background-color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
