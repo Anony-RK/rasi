@@ -29,21 +29,21 @@ $mscid=$_GET['msc'];
 if($mscid==1)
 {?>
 		<div class="alert alert-success" role="alert">
-                            <div class="alert-text">Branch Added Successfully!</div>
+                            <div class="alert-text">Bill Added Successfully!</div>
                         </div> 
 <?php
 }
 if($mscid==2)
 {?>
 	<div class="alert alert-success" role="alert">
-	<div class="alert-text">Branch updated Successfully!</div>
+	<div class="alert-text">Bill updated Successfully!</div>
 </div>
 <?php
 }
 if($mscid==3)
 {?>
 <div class="alert alert-danger" role="alert">
-                            <div class="alert-text">Branch Inactive Successfully!</div>
+                            <div class="alert-text">Bill Inactive Successfully!</div>
                         </div>
 <?php
 }

@@ -1,4 +1,4 @@
-
+// IGST and SGST
 
 var markup = "<option value=''>Select a Item</option>";
 
@@ -90,7 +90,7 @@ markup1="<option value=''>Select a Item</option>";
 $(document).on('change', '.qty', function (e) {
 
 
-$(document).on("keyup", '.discount', function (e){
+$(document).on("keyup", '.rate', function (e){
 
     var  discount = $(this).val();
 
@@ -139,7 +139,8 @@ $(document).on("keyup", '.discount', function (e){
           $(this).parent().parent().find(".alltotalamount").val(allamount);
         //  console.log(vals);
 
-
+        // $(document).on("keyup", '.rate', function (e){  
+        // });
 
 
 
@@ -159,7 +160,7 @@ var totaldiscount = 0;
 var totalcash = 0;
 var totalcgst = 0;
 var totalsgst =0;
-
+var totalval =0;
     $("input[name='discount[]']").each(function () {
         if ($(this).val() != '') {
             var dist = parseInt($(this).val());
@@ -169,12 +170,22 @@ var totalsgst =0;
 
         }
     });
+    $("input[name='total[]']").each(function () {
+        if ($(this).val() != '') {
+            var dist = parseInt($(this).val()) ;
+
+            totalval = totalval + dist; 
+            // console.log(totalamount);
+
+        }
+    });
+
     $("input[name='alltotalamount[]']").each(function () {
         if ($(this).val() != '') {
             var dist = parseInt($(this).val()) ;
 
             totalcash = totalcash + dist; 
-            console.log(totalamount);
+            // console.log(totalamount);
 
         }
     });
@@ -198,17 +209,17 @@ var totalsgst =0;
         }
     });
     $("#totaldiscount").val(totaldiscount);
-    $("#totalamount").val(totalcash);
+    $("#totalamount").val(totalval);
     $("#totalcgst").val(totalcgst);
     $("#totalsgst").val(totalsgst);
 
     
 
     // var otherchanges = $("#otherchanges").val();
-    var totals = $("#totalamount").val();
+    // var totals = $("#totalamount").val();
 
     // var totalinvoice = otherchanges + totals;
-    $("#totalinvoicevalue").val(totals);
+    $("#totalinvoicevalue").val(totalcash);
 
 
 

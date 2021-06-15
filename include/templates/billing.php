@@ -52,7 +52,7 @@ if($del>0)
                 <div class="card">
 					<div class="card-header d-flex justify-content-between mx-4">
 						<div class="card-title">Tax Invoice</div>
-                        <div class="card-title"   name="time"><span name="date" vlaue="<?php echo date("Y-M-d"); ?>"></span></div>
+                        <div class="card-title"   name="time"><span name="date" vlaue="<?php echo date("Y-M-d"); ?>"> <?php echo date("Y-M-d"); ?></span></div>
 					</div>
                     <div class="card-body">
                               <div class="row">
@@ -83,26 +83,27 @@ if($del>0)
                                 <div class="d-flex ">
                                     <b><h5>GSTIN      :</h5></b>
                                     <!-- <select name="" id=""> -->
-                                    <label for=""  style="margin-left:80px;"> <span name="companygst" value="<?php  echo $data['gst']; ?>"></span></label><br>
+                                    <label for=""  style="margin-left:80px;"> <span name="companygst" value="<?php  echo $data['gst']; ?>"> <?php  echo $data['gst']; ?></span></label><br>
                                 </div>
                                 <div class="d-flex ">
                                     <b><h5>Address    :</h5></b>
-                                    <label for="" style="margin-left:64px;"><span name="companyaddress" value="<?php  echo $data['companyname'].",". $data['address'].",". $data['pincode'].",".$data['state']."."; ?>"></span> </label><br>
+                                    <label for="" style="margin-left:64px;"><span name="companyaddress" value="<?php  echo $data['companyname'].",". $data['address'].",". $data['pincode'].",".$data['state']."."; ?>">
+                                    <?php  echo $data['companyname'].",". $data['address'].",". $data['pincode'].",".$data['state']."."; ?></span> </label><br>
                                 </div>
                                 <div class="d-flex  ">
                                     <b><h5>Contact No :</h5></b>
-                                    <label for=""  style="margin-left:40px;"> <span name="companyphone" value=" <?php  echo $data['phonenumber']; ?>"></span></label><br>
+                                    <label for=""  style="margin-left:40px;"> <span name="companyphone" value=" <?php  echo $data['phonenumber']; ?>"><?php  echo $data['phonenumber']; ?></span></label><br>
                                 </div>
                                 <div class="d-flex ">
                                     <b><h5>E-Mail     :</h5></b>
-                                    <label for=""  style="margin-left:81px;"> <span name="companyemail" value="<?php  echo $data['email']; ?>"></span></label><br>
+                                    <label for=""  style="margin-left:81px;"> <span name="companyemail" value="<?php  echo $data['email']; ?>"><?php  echo $data['email']; ?></span></label><br>
                                 </div>
                                 <?php  }	?> 
                                 </div>
 
                   <div class="col-md-4 text-center">
                   <?php $dates = date("Ymd"); ?>
-                  <h6><b>Invoice-Id :</b> <span value="<?php echo date("Ymd"); ?>" id="billid" name="billid"></span></h6>
+                  <h6><b>Invoice-Id :</b> <span value="<?php echo date("Ymd"); ?>" id="billid" name="billid"></span><?php echo date("Ymd"); ?></h6>
 					        </div><br><br><br>
                   
                   
@@ -120,11 +121,27 @@ if($del>0)
 										</thead>
 										<tbody>
 
+<script>
+// $(document).ready(function(){
+//     $(".referalno").on("change", function(){
+//         <?php //$customerid = "$(this).val()"; ?>
 
+//         <?php //$data = mysqli_query($mysqli,"SELECT customername,gstnumber,address1,address2,district,mobilenumber,
+//         state,country,pincode,customercode From customer WHERE customername = '$customerid'") or die (mysql_error()); ?>
+//         <?php //while($row = mysql_fetch_object($data)): ?>
+//             $("#customername").val(<?php //$row->customername ?>);
+//             $("#customergst").val(<?php //$row->gstnumber ?>);
+//             $("#customeraddress").val(<?php //$row->address1 . $row->address2 . $row->district .$row->state . $row->country . $row->pincode ?>);
+//             // $("#referalno").val(<?php //$row->total ?>);/
+//         <?php //endwhile; ?>
+//     });
+// });
+
+</script>
                     <?php
 
 // include "api/iedit-config.php";  // Using database connection file here
-  $records = mysqli_query($mysqli, "SELECT customername,gstnumber,address1,address2,district,state,country,pincode,customercode From customer WHERE customername = 'Prithiviraj K'");  // Use select query here 
+  $records = mysqli_query($mysqli, "SELECT customername,gstnumber,address1,address2,district,mobilenumber,state,country,pincode,customercode From customer WHERE customername = 'Prithiviraj K'");  // Use select query here 
 
 while($data = mysqli_fetch_array($records))
 {
@@ -132,21 +149,21 @@ while($data = mysqli_fetch_array($records))
 ?>
                                    <tr>
                                       <td>Purchaser Name</td>
-                                      <td><input type="text" class="form-control" name="customername" value="<?php  echo $data['customername']; ?>"></td>											 																						  
+                                      <td><input type="text" class="form-control" id="customername" name="customername" value="<?php  echo $data['customername']; ?>"></td>											 																						  
                                     </tr>
                                     <tr>
                                       <td>GSTIN</td>
-                                      <td><input type="text" class="form-control" name="customergst" value=" <?php  echo $data['gstnumber']; ?>"></td>  
+                                      <td><input type="text" class="form-control" id="customergst" name="customergst" value=" <?php  echo $data['gstnumber']; ?>"></td>  
                                     </tr>
                                     <tr>
                                       <td>Address</td>
-                                      <td><input type="text" class="form-control" name="customeraddress"  value=" <?php  echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
+                                      <td><input type="text" class="form-control" id="customeraddress" name="customeraddress"  value=" <?php  echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
                                     </tr>
                                     <tr>
                                       <td>Ref.No</td>
-                                      <td><input type="text" class="form-control" name="referalno" value="<?php  echo $data['customercode']; ?>" ></td>  
+                                      <td><input type="text" class="form-control" id="referalno" name="referalno" value="<?php  echo $data['customercode']; ?>" placeholder="Enter Customerid"></td>  
                                     </tr>
-              <?php }?>
+              <?php //}?>
 										  
 										</tbody>
 						    	</table>
@@ -163,11 +180,11 @@ while($data = mysqli_fetch_array($records))
 										<tbody>
                     <?php
 
-include "api/iedit-config.php";  // Using database connection file here
-  $records = mysqli_query($mysqli, "SELECT customername,gstnumber,address1,address2,district,state,country,pincode,mobilenumber From customer WHERE customername = 'Prithiviraj K'");  // Use select query here 
+// include "api/iedit-config.php";  // Using database connection file here
+//   $records = mysqli_query($mysqli, "SELECT customername,gstnumber,address1,address2,district,state,country,pincode,mobilenumber From customer WHERE customername = 'Prithiviraj K'");  // Use select query here 
 
-while($data = mysqli_fetch_array($records))
-{
+// while($data = mysqli_fetch_array($records))
+// {
    
 ?>
 										   <tr>
@@ -255,6 +272,37 @@ while($data = mysqli_fetch_array($records))
                   
                    </tbody>
                   </table>
+<!----------IGST------------>
+
+<table  id="billstable" class="table custom-table table-stritched table-sm">
+										<thead>
+                                        <th>
+                                        <th colspan="6"> </th>
+                                        <th colspan="2">IGST</th>
+                                        
+                                        <th></th>
+                                        </th>
+                                       
+											                   <tr>
+											                        <th > S.No</th>
+                                              <th > Description & HSN of Goods</th>
+                                              <th > QTY </th>
+                                              <th > Rate</th>
+                                              <th > Total</th>
+                                              <th > Disc.</th>
+                                              <th > Taxable Value</th>                                            
+                                              <th > Rate</th>
+                                              <th > Amount</th>                                                                                        
+                                              <th > Total Amount</th>                                         
+										                    	</tr>
+									                	</thead>
+										<tbody>
+                  
+                   </tbody>
+                  </table>
+
+<!---------------------------->
+
 
                   <div class="row">
                     <div class="col-md-5"></div>
@@ -362,17 +410,17 @@ while($data = mysqli_fetch_array($records))
                </div>
 				</div>
 		
-                   <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
+                   <!-- <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
                        <div class="custom-control custom-checkbox mt-4">
                             <input type="checkbox" value="Yes"  <?php  //if($status==0) { echo 'checked'; //} ?> tabindex="25"  class="custom-control-input" id="status" name="status">
 										       <label class="custom-control-label" for="status">Status</label>
-									 </div><br /><br />
-                </div>
+									 </div><br /><br /> -->
+                <!-- </div> -->
       
          <div class="row">
 					   <div class="col-md-4 d-flex" > 
-						<button type="button" id="taxdownloadx" name="customerdownload" tabindex="71" class="btn btn-primary mb-2"><span class="icon-download"></span>Download</button>
-                <button  tabindex="27" type="button" id="taxbulkuploadx" name="itembulkupload" class="btn btn-primary  itembutton form-control" ><span class="icon-upload"></span>Upload</button><br /><br />
+						<!-- <button type="button" id="taxdownloadx" name="customerdownload" tabindex="71" class="btn btn-primary mb-2"><span class="icon-download"></span>Download</button> -->
+            <!-- <button  tabindex="27" type="button" id="taxbulkuploadx" name="itembulkupload" class="btn btn-primary  itembutton form-control" ><span class="icon-upload"></span>Upload</button><br /><br /> -->
 					   </div>
               <div class="col-md-6"></div>
                             
