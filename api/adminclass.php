@@ -2795,7 +2795,7 @@ public function addbilling($mysqli) {
 		$basis  = mysqli_real_escape_string($mysqli,$_POST['basis']);		
 	  }	
 
-	  
+
 	  if (isset($_POST['accounttype'])) {
 		$accounttype              = mysqli_real_escape_string($mysqli,$_POST['accounttype']);		
 	  }	
@@ -2817,6 +2817,54 @@ public function addbilling($mysqli) {
 		$costcenter             = 1;
 	}
 
+
+
+	
+	$qry = "INSERT INTO billing(
+		billid, date,companydetails, customerdetails, 
+		 shippingdetails, transportdetails, products, totalamount, , contactperson,
+		  mobilenumber, whatsappnumber, emailid, gstnumber, isbranch, 
+		  needmembership, membershipno, membershipvalue, issuedate,
+		   expirydate, person1, mobile1, person2, mobile2, person3,
+		    mobile3, subgroup, groupname, ledgername, costcentre, inventory) 
+	VALUES (
+	'".strip_tags($customercode)."',
+	'".strip_tags($typeofcustomer)."',
+	'".strip_tags($customername)."',
+	'".strip_tags($address1)."',
+	'".strip_tags($address2)."',
+	'".strip_tags($district)."',
+	'".strip_tags($pincode)."',
+	'".strip_tags($state)."',
+	'".strip_tags($country)."',
+	'".strip_tags($contactperson)."',
+	'".strip_tags($mobilenumber)."',
+	'".strip_tags($whatsappnumber)."',
+	'".strip_tags($emailid)."',
+	'".strip_tags($gstnumber)."',
+	'".strip_tags($isbranch)."',
+	'".strip_tags($needmembership)."',
+	'".strip_tags($membershipno)."',
+	'".strip_tags($membershipvalue)."',
+	'".strip_tags($issuedate)."',
+	'".strip_tags($expirydate)."',
+	'".strip_tags($mobile1)."',
+	'".strip_tags($person1)."',  
+	'".strip_tags($mobile2)."',
+	'".strip_tags($person2)."',
+	'".strip_tags($mobile3)."', 
+	'".strip_tags($person3)."', 
+	'".strip_tags($subgroup)."',
+	'".strip_tags($groupname)."',
+	'".strip_tags($ledgername)."', 
+	'".strip_tags($costcentre)."',
+	'".strip_tags($inventory)."');";		
+
+	$res =$mysqli->query($qry)or die("Error in Query".$mysqli->error);
+	$id = 0;
+	$id = $mysqli->insert_id;
+
+	return $id; 
 }
 
 

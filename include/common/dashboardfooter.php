@@ -310,7 +310,35 @@
 		[10, 25, 50, "All"]
 	]
 	});
+
+// billing table
+
+	var billing_info = $('#billing_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxbilling.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
 	$('#search').change(function(){
+		billing_info.draw();
         branch_info.draw();
 		company_info.draw();
 		item_info.draw();

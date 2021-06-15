@@ -102,7 +102,7 @@ if($del>0)
 
                   <div class="col-md-4 text-center">
                   <?php $dates = date("Ymd"); ?>
-                  <h6><b>Bill-Id :</b> <span value=" <?php echo $dates; ?>" id="billid" name="billid"></span></h6>
+                  <h6><b>Invoice-Id :</b> <span value="<?php echo date("Ymd"); ?>" id="billid" name="billid"></span></h6>
 					        </div><br><br><br>
                   
                   

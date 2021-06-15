@@ -69,9 +69,9 @@
 										</li>
 										</li>
 											
-										<!--<li>
-											<a href="editgoodsreceivingnote"><i class="icon-credit-card"></i>Goods Receiving Note</span></a>
-										</li>-->
+										<li>
+											<a href="billing"><i class="icon-note"></i>Billing</span></a>
+										</li>
 									</ul>
 								</div>
 							</li>
