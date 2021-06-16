@@ -122,46 +122,58 @@ if($del>0)
 										<tbody>
 
 <script>
-// $(document).ready(function(){
-//     $(".referalno").on("change", function(){
-//         <?php //$customerid = "$(this).val()"; ?>
 
-//         <?php //$data = mysqli_query($mysqli,"SELECT customername,gstnumber,address1,address2,district,mobilenumber,
-//         state,country,pincode,customercode From customer WHERE customername = '$customerid'") or die (mysql_error()); ?>
-//         <?php //while($row = mysql_fetch_object($data)): ?>
-//             $("#customername").val(<?php //$row->customername ?>);
-//             $("#customergst").val(<?php //$row->gstnumber ?>);
-//             $("#customeraddress").val(<?php //$row->address1 . $row->address2 . $row->district .$row->state . $row->country . $row->pincode ?>);
-//             // $("#referalno").val(<?php //$row->total ?>);/
-//         <?php //endwhile; ?>
-//     });
-// });
+        function GetDetail(str) {
+            if (str.length == 0) {
+                document.getElementById("customername").value = "";
+              
+                document.getElementById("customeraddress").value = "";
+                document.getElementById("customergst").value = "";
+                document.getElementById("mobilenumber").value = "";
+                // document.getElementById("last_name").value = "";
+                return;
+            }
+            else {
+  
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+  
+                    if (this.readyState == 4 && 
+                            this.status == 200) {
+                        var myObj = JSON.parse(this.responseText);
+  
+                        document.getElementById("customername").value = myObj[0];
+                        document.getElementById("customergst").value = myObj[1];
+                        document.getElementById("customeraddress").value = myObj[2];
+                        document.getElementById("mobilenumber").value = myObj[3];
 
+                        document.getElementById("receivername").value = myObj[0];
+                        document.getElementById("receivergst").value = myObj[1];
+                        document.getElementById("receiveraddress").value = myObj[2];
+                    }
+                };
+  
+                xmlhttp.open("GET", "customersbill.php?customercode=" + str, true);
+                xmlhttp.send();
+            }
+        }
 </script>
-                    <?php
 
-// include "api/iedit-config.php";  // Using database connection file here
-  $records = mysqli_query($mysqli, "SELECT customername,gstnumber,address1,address2,district,mobilenumber,state,country,pincode,customercode From customer WHERE customername = 'Prithiviraj K'");  // Use select query here 
-
-while($data = mysqli_fetch_array($records))
-{
-   
-?>
                                    <tr>
                                       <td>Purchaser Name</td>
-                                      <td><input type="text" class="form-control" id="customername" name="customername" value="<?php  echo $data['customername']; ?>"></td>											 																						  
+                                      <td><input type="text" class="form-control" id="customername" name="customername" value="<?php  //echo $data['customername']; ?>"></td>											 																						  
                                     </tr>
                                     <tr>
                                       <td>GSTIN</td>
-                                      <td><input type="text" class="form-control" id="customergst" name="customergst" value=" <?php  echo $data['gstnumber']; ?>"></td>  
+                                      <td><input type="text" class="form-control" id="customergst" name="customergst" value=" <?php  //echo $data['gstnumber']; ?>"></td>  
                                     </tr>
                                     <tr>
                                       <td>Address</td>
-                                      <td><input type="text" class="form-control" id="customeraddress" name="customeraddress"  value=" <?php  echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
+                                      <td><input type="text" class="form-control" id="customeraddress" name="customeraddress"  value=" <?php // echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
                                     </tr>
                                     <tr>
                                       <td>Ref.No</td>
-                                      <td><input type="text" class="form-control" id="referalno" name="referalno" value="<?php  echo $data['customercode']; ?>" placeholder="Enter Customerid"></td>  
+                                      <td><input type="text" class="form-control" onkeyup="GetDetail(this.value)" id="referalno" name="referalno" value="<?php  //echo $data['customercode']; ?>" placeholder="Enter Customerid"></td>  
                                     </tr>
               <?php //}?>
 										  
@@ -178,32 +190,25 @@ while($data = mysqli_fetch_array($records))
 											</tr>
 										</thead>
 										<tbody>
-                    <?php
-
-// include "api/iedit-config.php";  // Using database connection file here
-//   $records = mysqli_query($mysqli, "SELECT customername,gstnumber,address1,address2,district,state,country,pincode,mobilenumber From customer WHERE customername = 'Prithiviraj K'");  // Use select query here 
-
-// while($data = mysqli_fetch_array($records))
-// {
-   
-?>
+  
 										   <tr>
 											  <td>Receiver Name</td>
-											  <td><input type="text" class="form-control" name="receivername" value="<?php  echo $data['customername']; ?>"></td>											 																						  
+											  <td><input type="text" class="form-control" id="receivername" name="receivername" value="<?php  //echo $data['customername']; ?>"></td>											 																						  
 											</tr>
                                             <tr>
 											  <td>GSTIN</td>
-											  <td><input type="text" class="form-control" name="receivergst" value=" <?php  echo $data['gstnumber']; ?>" ></td>  
+											  <td><input type="text" class="form-control" id="receivergst" name="receivergst" value=" <?php  //echo $data['gstnumber']; ?>" ></td>  
 											</tr>
                                             <tr>
 											  <td>Delivery Address</td>
-											  <td><input type="text" class="form-control" name="receiveraddress"  value="<?php  echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
+											  <td><input type="text" class="form-control" id="receiveraddress" name="receiveraddress"  value="<?php  //echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
 											</tr>
                                             <tr>
 											  <td>Contact No</td>
-											  <td><input type="text" class="form-control" name="receivercontact" value="<?php  echo $data['mobilenumber']; ?>"></td>  
+											  <td><input type="text" class="form-control" id="mobilenumber" name="receivercontact" value="<?php // echo $data['mobilenumber']; ?>"></td>  
 											</tr>
-                      <?php  }?>
+                      <?php  //}?>
+                     
 										</tbody>
 						    	</table>
                        </div>
@@ -242,6 +247,29 @@ while($data = mysqli_fetch_array($records))
                        </div>
 
                     </div>
+                    <div class="selectstate d-flex align-items-center">
+                        <p><b>Delivery State  ?</b></p>
+                        <div class="checks ml-4 d-flex">
+                         <!--  <div class="state d-flex">
+                              <input type="radio" >
+                              <label for="" id="tamilnadu" class="ml-2">TamilNadu</label>
+                          </div>
+                          <div class="state d-flex ml-4">
+                              <input type="radio" >
+                              <label for="" id="others" class="ml-2">Others</label>
+                          </div> -->
+                        
+                       <div class="form-check align-items-center d-flex">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="tamilnadu" checked>
+                          <label class="form-check-label ml-2" for="flexRadioDefault1"> Tamilnadu</label> 
+                        </div>
+                        <div class="form-check align-items-center d-flex">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="others">
+                          <label class="form-check-label ml-2" for="flexRadioDefault2"> Others </label>
+                        </div>
+                        </div>
+                    </div>
+                          <br><br>
                     <div class="row gutters">
                         <div class="col-md-12">
                         <table  id="billstable" class="table custom-table table-stritched table-sm">
@@ -274,7 +302,7 @@ while($data = mysqli_fetch_array($records))
                   </table>
 <!----------IGST------------>
 
-<table  id="billstable" class="table custom-table table-stritched table-sm">
+<table  id="igsttable" class="table custom-table table-stritched table-sm">
 										<thead>
                                         <th>
                                         <th colspan="6"> </th>
@@ -303,10 +331,10 @@ while($data = mysqli_fetch_array($records))
 
 <!---------------------------->
 
-
-                  <div class="row">
+<div id="instate">
+                  <div class="row" >
                     <div class="col-md-5"></div>
-                    <div class="col-md-7">
+                    <div class="col-md-7" >
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Amount</p>
                         <div class="input-group mb-3 w-50">
@@ -321,20 +349,21 @@ while($data = mysqli_fetch_array($records))
                           <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
-                      <div class="total d-flex justify-content-between" id="alltotal">
+                      <div class="total d-flex justify-content-between hidestate" id="hidestate">
                         <p>Total CGST</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalcgst" name="totalcgst">
                           <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
-                      <div class="total d-flex justify-content-between" id="alltotal">
+                      <div class="total d-flex justify-content-between hidestate" id="hidestate">
                         <p>Total SGST</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalsgst" name="totalsgst">
                           <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
+                      
                       
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Other Changes</p>
@@ -357,6 +386,57 @@ while($data = mysqli_fetch_array($records))
                           <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
+                    </div>
+                  </div>
+</div>
+<div id="outstate">
+                  <div class="row" >
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7" >
+                      <div class="total d-flex justify-content-between" id="alltotal">
+                        <p>Total Amount</p>
+                        <div class="input-group mb-3 w-50">
+                          <input type="number" class="form-control w-50 " placeholder="0" readonly id="igsttotalamount" name="igsttotalamount">
+                          <span class="input-group-text" id="basic-addon2">.Rs</span>
+                        </div>
+                      </div>
+                      <div class="total d-flex justify-content-between" id="alltotal">
+                        <p>Total Discount</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" readonly id="igsttotaldiscount" name="igsttotaldiscount">
+                          <span class="input-group-text" id="basic-addon2">.Rs</span>
+                        </div>
+                      </div>
+                      <div class="total d-flex justify-content-between hideothers" id="hideothers">
+                        <p>IGST</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" readonly id="igsttotaligst" name="igsttotaligst">
+                          <span class="input-group-text" id="basic-addon2">.Rs</span>
+                        </div>
+                      </div>
+                      
+                      <div class="total d-flex justify-content-between" id="alltotal">
+                        <p>Other Changes</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" id="igstotherchanges" name="igstotherchanges">
+                          <span class="input-group-text" id="basic-addon2">.Rs</span>
+                        </div>
+                      </div>
+                      <div class="total d-flex justify-content-between" id="alltotal">
+                        <p>Total Invoice Value</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " readonly placeholder="0" id="igsttotalinvoicevalue" name="igsttotalinvoicevalue">
+                          <span class="input-group-text" id="basic-addon2">.Rs</span>
+                        </div>
+                      </div>
+                      <div class="total d-flex justify-content-between" id="alltotal">
+                        <p>Total Invoice Value (In Words)</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " id="igstinvoiceinword" name="igstinvoiceinword">
+                          <span class="input-group-text" id="basic-addon2">.Rs</span>
+                        </div>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
