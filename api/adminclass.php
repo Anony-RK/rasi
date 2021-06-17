@@ -2788,8 +2788,7 @@ public function addbilling($mysqli) {
 		  if (isset($_POST['igsttotaligst'])) {
 			$igsttotaligst = mysqli_real_escape_string($mysqli,$_POST['igsttotaligst']);		
 		  }	
-		//   echo $igsttotaligst;
-		//   die();
+		
 		  if (isset($_POST['igstotherchanges'])) {
 			$igstotherchanges = mysqli_real_escape_string($mysqli,$_POST['igstotherchanges']);		
 		  }	
