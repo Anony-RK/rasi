@@ -4,14 +4,13 @@ $subgrouplist=$userObj->getSubgroup($mysqli);
 $id=0;
  if(isset($_POST['submitbill']))
  {
-  if(isset($_POST['tamilnadu']) &&  isset($_POST['tamilnadu']) == true) {
+  if(isset($_POST['others']) &&  isset($_POST['others']) == true) {
 		$addbilling = $userObj->addbilling($mysqli);   
   ?>
       <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
         <?php
 }
-// else
-if(isset($_POST['others']) &&  isset($_POST['others']) == true )
+ elseif(isset($_POST['tamilnadu']) &&  isset($_POST['tamilnadu']) == true )
 {
   $addcgst = $userObj->addcgst($mysqli);   
   ?>
