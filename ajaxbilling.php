@@ -10,28 +10,39 @@ $column = array(
     'shippingdetails',
     'transportdetails',
     'products',
+    'qty',
+    'rate',
+    'total',
+    'discount',
+    'taxablevalue',
+    'cgst',
+    'sgst',
+    'igst',
+    'alltotalamount',
     'totalamount',
-    'discountamount',
+    'totaldiscount',
     'taxablevalue',    
-	'cgst',
-	'sgst',
-    'totalinvoice',   
+	'totalcgst',
+	'totalsgst',
+    'totaligst',
+    'otherchanges',
+    'totalinvoicevalue',   
     'basis',   
 	'status'
 );
 
 $query = "SELECT * FROM billing where 1";
 
-if($_POST['search']!="");
+if(isset($_POST['search'])!="");
 {
 if (isset($_POST['search'])) {
 
-	if($_POST['search']=="Active")
+	if( $_POST['search'] =="Active")
 {
 	$query .="and status=0 ";
 	
 }
-else if($_POST['search']=="Inactive")
+else if($_POST['search'] =="Inactive")
 {
 	$query .="and status=1 ";
 }
@@ -46,19 +57,30 @@ else{
  OR shippingdetails LIKE '%".$_POST['search']."%'
  OR transportdetails LIKE '%".$_POST['search']."%'
  OR products LIKE '%".$_POST['search']."%'
- OR totalamount LIKE '%".$_POST['search']."%'
- OR discountamount LIKE '%".$_POST['search']."%'
+ OR qty LIKE '%".$_POST['search']."%'
+ OR rate LIKE '%".$_POST['search']."%'
+ OR total LIKE '%".$_POST['search']."%'
+ OR discount LIKE '%".$_POST['search']."%'
  OR taxablevalue LIKE '%".$_POST['search']."%'
  OR cgst LIKE '%".$_POST['search']."%'
  OR sgst LIKE '%".$_POST['search']."%'
- OR totalinvoice LIKE '%".$_POST['search']."%'
+ OR igst LIKE '%".$_POST['search']."%'
+ OR alltotalamount LIKE '%".$_POST['search']."%'
+ OR totalamount LIKE '%".$_POST['search']."%'
+ OR totaldiscount LIKE '%".$_POST['search']."%'
+ OR taxablevalue LIKE '%".$_POST['search']."%'
+ OR cgst LIKE '%".$_POST['search']."%'
+ OR sgst LIKE '%".$_POST['search']."%'
+ OR igst LIKE '%".$_POST['search']."%'
+ OR otherchanges LIKE '%".$_POST['search']."%'
+ OR totalinvoicevalue LIKE '%".$_POST['search']."%'
  OR basis LIKE '%".$_POST['search']."%'
  ";
 }
 }
 }
 
-if (isset($_POST['order'])) {
+if ( isset( $_POST['order']) ) {
     $query .= 'ORDER BY ' . $column[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
 } else {
     $query .= ' ';
@@ -66,8 +88,8 @@ if (isset($_POST['order'])) {
 
 $query1 = '';
 
-if ($_POST['length'] != -1) {
-    $query1 = 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+if ( isset($_POST['length']) != -1) {
+    $query1 = 'LIMIT ' . isset( $_POST['start']) . ',' . isset($_POST['length']);
 }
 
 $statement = $connect->prepare($query);
@@ -95,12 +117,23 @@ foreach ($result as $row) {
     $sub_array[] = $row['shippingdetails'];
     $sub_array[] = $row['transportdetails'];
     $sub_array[] = $row['products'];  
-    $sub_array[] = $row['totalamount'];
-    $sub_array[] = $row['discountamount'];
+    $sub_array[] = $row['qty'];
+    $sub_array[] = $row['rate'];
+    $sub_array[] = $row['total'];
+    $sub_array[] = $row['discount'];
     $sub_array[] = $row['taxablevalue'];
     $sub_array[] = $row['cgst'];
     $sub_array[] = $row['sgst'];
-    $sub_array[] = $row['totalinvoice'];
+    $sub_array[] = $row['igst'];
+    $sub_array[] = $row['alltotalamount'];
+    $sub_array[] = $row['totalamount'];
+    $sub_array[] = $row['totaldiscount'];
+    $sub_array[] = $row['taxablevalue'];
+    $sub_array[] = $row['cgst'];
+    $sub_array[] = $row['sgst'];
+    $sub_array[] = $row['igst'];
+    $sub_array[] = $row['otherchanges'];
+    $sub_array[] = $row['totalinvoicevalue'];
     $sub_array[] = $row['basis'];
     
     $status      = $row['status'];
@@ -112,9 +145,10 @@ foreach ($result as $row) {
 	{
     $sub_array[]="<span style='width: 144px;'><span class='kt-badge  kt-badge--success kt-badge--inline kt-badge--pill'>Active</span></span>";
 	}
-	$id          = $row['branchid'];
+	$id          = $row['id'];
 	
-	$action="&nbsp;&nbsp;<a href='branch&del=$id' title='Edit details'><span class='icon-trash-2'></span></a>";
+	$action="<a href='customer&upd=$id' title='Edit details'><span class='icon-border_color'></span></a>&nbsp;&nbsp; 
+	<a href='customer&del=$id' title='Edit details'><span class='icon-trash-2'></span></a>";
 
 	
 	$sub_array[] = $action;

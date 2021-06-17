@@ -59,15 +59,26 @@ if($mscid==3)
 											  <th>shipping Details</th>											 
 											  <th>Transport Details</th>
 											  <th>Products</th>
-											  <th>Total Amount</th>
-											  <th>Discount Amount</th>
+											  <th>Quantity</th>
+											  <th>Rate</th>
+											  <th>Total</th>
+											  <th>Discount</th>
 											  <th>Taxable Value</th>
 											  <th>CGST</th>
 											  <th>SGST</th>
+											  <th>IGST</th>
+											  <th>All Total Amount</th>										  
+											  <th>Total Amount</th>
+											  <th>Discount Amount</th>
+											  <th>Taxable Value</th>
+											  <th>TotalCGST</th>
+											  <th>TotalSGST</th>
+											  <th>TotalIGST</th>
+											  <th>Other Changes</th>
 											  <th>Total Invoice </th>
 											  <th>Basis</th>
-											  <!-- <th>Pfno</th>
-											  <th>Esicno</th>
+											  
+											  <!--<th>Esicno</th>
 											  <th>loginshortername</th> -->
 											  <th>Status</th>
 											  <th>Action</th>

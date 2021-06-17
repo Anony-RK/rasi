@@ -2702,18 +2702,240 @@ public function getSubgroup($mysqli){
 
 public function addbilling($mysqli) {
 	$date  = date('Y-m-d');
-  
+    // if(isset($_POST['igsttotaligst'])){
+
+		$companygst=$companyaddress=$companyphone=$companyemail=$billid="";
+
+		if (isset($_POST['date'])) {
+		 $date    = mysqli_real_escape_string($mysqli,$_POST['date']);
+		}
+		
+		if (isset($_POST['companygst'])) {
+		$companygst   = mysqli_real_escape_string($mysqli,$_POST['companygst']);		
+		}	
+		if (isset($_POST['companyaddress'])) {
+		$companyaddress     = mysqli_real_escape_string($mysqli,$_POST['companyaddress']);		
+		}
+		if (isset($_POST['companyphone'])) {
+		$companyphone  = mysqli_real_escape_string($mysqli,$_POST['companyphone']);		
+		}
+		if (isset($_POST['companyemail'])) {
+		$companyemail  = mysqli_real_escape_string($mysqli,$_POST['companyemail']);		
+		}
+		if (isset($_POST['billid'])) {
+		$billid     = mysqli_real_escape_string($mysqli,$_POST['billid']);
+		}
+	
+	
+		if (isset($_POST['customername'])) {
+		$customername  = mysqli_real_escape_string($mysqli,$_POST['customername']);		
+		}	
+		if (isset($_POST['customergst'])) {
+		  $customergst  = mysqli_real_escape_string($mysqli,$_POST['customergst']);		
+		}	
+		if (isset($_POST['customeraddress'])) {
+		  $customeraddress    = mysqli_real_escape_string($mysqli,$_POST['customeraddress']);		
+		}	
+		if (isset($_POST['referalno'])) {
+		  $referalno = mysqli_real_escape_string($mysqli,$_POST['referalno']);		
+		}	
+	
+		
+		if (isset($_POST['receivername'])) {
+		  $receivername  = mysqli_real_escape_string($mysqli,$_POST['receivername']);		
+		}	
+		if (isset($_POST['receivergst'])) {
+		  $receivergst = mysqli_real_escape_string($mysqli,$_POST['receivergst']);		
+		}	
+		if (isset($_POST['receiveraddress'])) {
+		  $receiveraddress  = mysqli_real_escape_string($mysqli,$_POST['receiveraddress']);		
+		}	
+		if (isset($_POST['receivercontact'])) {
+		  $receivercontact   = mysqli_real_escape_string($mysqli,$_POST['receivercontact']);		
+		}	
+	
+	
+	
+		if (isset($_POST['transportername'])) {
+		  $transportername    = mysqli_real_escape_string($mysqli,$_POST['transportername']);		
+		}		
+		if (isset($_POST['transportergst'])) {
+			$transportergst  = mysqli_real_escape_string($mysqli,$_POST['transportergst']);		
+		  }	
+		  if (isset($_POST['transporteraddress'])) {
+			$transporteraddress = mysqli_real_escape_string($mysqli,$_POST['transporteraddress']);		
+		  }	
+		  if (isset($_POST['transporteremail'])) {
+			$transporteremail = mysqli_real_escape_string($mysqli,$_POST['transporteremail']);		
+		  }	
+		  if (isset($_POST['vehiclenumber'])) {
+			$vehiclenumber  = mysqli_real_escape_string($mysqli,$_POST['vehiclenumber']);		
+		  }	
+	
+	
+		  if (isset($_POST['igsttotalamount'])) {
+			$igsttotalamount  = mysqli_real_escape_string($mysqli,$_POST['igsttotalamount']);		
+		  }		
+		  if (isset($_POST['igsttotaldiscount'])) {
+			$igsttotaldiscount  = mysqli_real_escape_string($mysqli,$_POST['igsttotaldiscount']);		
+		  }	
+		//   if (isset($_POST['totalcgst'])) {
+		// 	$totalcgst = mysqli_real_escape_string($mysqli,$_POST['totalcgst']);		
+		//   }	
+		//   if (isset($_POST['totalsgst'])) {
+		// 	$totalsgst = mysqli_real_escape_string($mysqli,$_POST['totalsgst']);		
+		//   }	
+		  if (isset($_POST['igsttotaligst'])) {
+			$igsttotaligst = mysqli_real_escape_string($mysqli,$_POST['igsttotaligst']);		
+		  }	
+		//   echo $igsttotaligst;
+		//   die();
+		  if (isset($_POST['igstotherchanges'])) {
+			$igstotherchanges = mysqli_real_escape_string($mysqli,$_POST['igstotherchanges']);		
+		  }	
+		  if (isset($_POST['igsttotalinvoicevalue'])) {
+			$igsttotalinvoicevalue = mysqli_real_escape_string($mysqli,$_POST['igsttotalinvoicevalue']);		
+		  }		
+		  if (isset($_POST['basis'])) {
+			$basis  = mysqli_real_escape_string($mysqli,$_POST['basis']);		
+		  }	
+	
+		  if(isset($_POST["products"])){
+			$product=$_POST["products"];
+			$products=implode(',', $product);
+		}
+		if(isset($_POST["igstqty"])){
+			$igstqty=$_POST["igstqty"];
+			$igstqty=implode(',', $igstqty);
+		}
+		if(isset($_POST["igstrate"])){
+			$igstrate=$_POST["igstrate"];
+			$igstrate=implode(',', $igstrate);
+		}
+		if(isset($_POST["igsttotal"])){
+			$igsttotal=$_POST["igsttotal"];
+			$igsttotal=implode(',', $igsttotal);
+		}
+		if(isset($_POST["igstdiscount"])){
+			$igstdiscount=$_POST["igstdiscount"];
+			$igstdiscount=implode(',', $igstdiscount);
+		}
+		if(isset($_POST["igsttaxablevalue"])){
+			$igsttaxablevalue=$_POST["igsttaxablevalue"];
+			$igsttaxablevalue=implode(',', $igsttaxablevalue);
+		}
+		if(isset($_POST["igstrateigst"])){
+			$igstrateigst=$_POST["igstrateigst"];
+			$igstrateigst=implode(',', $igstrateigst);
+		}
+		
+		if(isset($_POST["igstalltotalamount"])){
+			$igstalltotalamount=$_POST["igstalltotalamount"];
+			$igstalltotalamount=implode(',', $igstalltotalamount);
+		}
+	
+	
+			 if(isset($_POST['basis']) &&    $_POST['basis'] == 'Yes')		
+		{
+			$basis   = "Yes";
+		}
+		else
+		{
+			$basis     = "No";
+		}
+		
+	
+	// 	foreach($html->find('table') as $table){ 
+	// 		// returns all the <tr> tag inside $table
+	// 		$all_trs = $table->find('tr');
+	// 		$count = count($all_trs);
+	// 		echo "<script>alert($count);</script>";
+	//    }
+	
+	
+		
+	
+		$companydetails = array("$companygst","$companyaddress","$companyphone","$companyemail");
+		// $companydetail= json_encode($comapnydetails);
+		$company=implode(",",$companydetails);
+		
+		$customerdetails = ["$customername","$customergst","$customeraddress","$referalno"];
+		// $customerdetail = json_encode($customerdetails);
+		$customer=implode(",",$customerdetails);
+	
+		$shippingdetails = ["$receivername","$receivergst","$receiveraddress","$receivercontact"];
+		// $shippingdetail = json_encode($shippingdetails);
+		$shipping=implode(",",$shippingdetails);
+	
+	
+		$transportdetails = ["$transportername ","$transportergst","$transporteraddress","$transporteremail","$vehiclenumber"];
+		// $transportdetail = json_encode($transportdetails);
+		$transport=implode(",",$transportdetails);
+	
+	
+	
+		// $companydetails = $_POST['companydetails'];
+	// foreach($companydetails as $companydetail){
+	//   $companydetails = $companydetail; 
+	// }
+	
+		$qry = "INSERT INTO billing(
+			billid, date,companydetails, customerdetails, 
+			 shippingdetails, transportdetails,products,qty,rate,total,
+			 discount,taxablevalue,igst,alltotalamount,
+			  totalamount, totaldiscount,
+			   totaligst, otherchanges, totalinvoicevalue,basis) 
+		 VALUES (
+		 '$billid',
+		 '$date',
+		 '$company ',
+		 '$customer',
+		 '$shipping',
+		 '$transport',
+		 '$products',
+		 '$igstqty',
+		 '$igstrate',
+		 '$igsttotal',
+		 '$igstdiscount',
+		 '$igsttaxablevalue',
+		 '$igstrateigst',
+		 '$igstalltotalamount',
+		 '$igsttotalamount',
+		 '$igsttotaldiscount',
+		 '$igsttotaligst',
+		 '$igstotherchanges', 
+		 '$igsttotalinvoicevalue',
+		 '$basis')";		
+	
+		$res =$mysqli->query($qry)or die("Error in Query".$mysqli->error);
+		$id = 0;
+		$id = $mysqli->insert_id;
+	
+		return $id; 
+	
+	
+
+	}
+	
+	
+	public function addcgst($mysqli){
+
+
+
+  $companygst=$companyaddress=$companyphone=$companyemail=$billid="";
+
 	if (isset($_POST['date'])) {
 	 $date    = mysqli_real_escape_string($mysqli,$_POST['date']);
 	}
+	
 	if (isset($_POST['companygst'])) {
 	$companygst   = mysqli_real_escape_string($mysqli,$_POST['companygst']);		
 	}	
 	if (isset($_POST['companyaddress'])) {
 	$companyaddress     = mysqli_real_escape_string($mysqli,$_POST['companyaddress']);		
 	}
-	if (isset($_POST['conpanyphone'])) {
-	$conpanyphone  = mysqli_real_escape_string($mysqli,$_POST['conpanyphone']);		
+	if (isset($_POST['companyphone'])) {
+	$companyphone  = mysqli_real_escape_string($mysqli,$_POST['companyphone']);		
 	}
 	if (isset($_POST['companyemail'])) {
 	$companyemail  = mysqli_real_escape_string($mysqli,$_POST['companyemail']);		
@@ -2729,8 +2951,8 @@ public function addbilling($mysqli) {
 	if (isset($_POST['customergst'])) {
 	  $customergst  = mysqli_real_escape_string($mysqli,$_POST['customergst']);		
 	}	
-	if (isset($_POST['custoneraddress'])) {
-	  $custoneraddress    = mysqli_real_escape_string($mysqli,$_POST['custoneraddress']);		
+	if (isset($_POST['customeraddress'])) {
+	  $customeraddress    = mysqli_real_escape_string($mysqli,$_POST['customeraddress']);		
 	}	
 	if (isset($_POST['referalno'])) {
 	  $referalno = mysqli_real_escape_string($mysqli,$_POST['referalno']);		
@@ -2752,8 +2974,8 @@ public function addbilling($mysqli) {
 
 
 
-	if (isset($_POST['trasportername'])) {
-	  $trasportername               = mysqli_real_escape_string($mysqli,$_POST['trasportername']);		
+	if (isset($_POST['transportername'])) {
+	  $transportername    = mysqli_real_escape_string($mysqli,$_POST['transportername']);		
 	}		
 	if (isset($_POST['transportergst'])) {
 		$transportergst  = mysqli_real_escape_string($mysqli,$_POST['transportergst']);		
@@ -2770,7 +2992,7 @@ public function addbilling($mysqli) {
 
 
 	  if (isset($_POST['totalamount'])) {
-		$totalamount               = mysqli_real_escape_string($mysqli,$_POST['totalamount']);		
+		$totalamount  = mysqli_real_escape_string($mysqli,$_POST['totalamount']);		
 	  }		
 	  if (isset($_POST['totaldiscount'])) {
 		$totaldiscount  = mysqli_real_escape_string($mysqli,$_POST['totaldiscount']);		
@@ -2781,96 +3003,138 @@ public function addbilling($mysqli) {
 	  if (isset($_POST['totalsgst'])) {
 		$totalsgst = mysqli_real_escape_string($mysqli,$_POST['totalsgst']);		
 	  }	
+	 	
 	  if (isset($_POST['otherchanges'])) {
 		$otherchanges = mysqli_real_escape_string($mysqli,$_POST['otherchanges']);		
 	  }	
 	  if (isset($_POST['totalinvoicevalue'])) {
 		$totalinvoicevalue = mysqli_real_escape_string($mysqli,$_POST['totalinvoicevalue']);		
 	  }		
-
-
-
-
 	  if (isset($_POST['basis'])) {
 		$basis  = mysqli_real_escape_string($mysqli,$_POST['basis']);		
 	  }	
 
+	  if(isset($_POST["products"])){
+		$product=$_POST["products"];
+		$products=implode(',', $product);
+	}
+	if(isset($_POST["qty"])){
+		$qty=$_POST["qty"];
+		$qty=implode(',', $qty);
+	}
+	if(isset($_POST["rate"])){
+		$rate=$_POST["rate"];
+		$rate=implode(',', $rate);
+	}
+	if(isset($_POST["total"])){
+		$total=$_POST["total"];
+		$total=implode(',', $total);
+	}
+	if(isset($_POST["discount"])){
+		$discount=$_POST["discount"];
+		$discount=implode(',', $discount);
+	}
+	if(isset($_POST["taxablevalue"])){
+		$taxablevalue=$_POST["taxablevalue"];
+		$taxablevalue=implode(',', $taxablevalue);
+	}
+	if(isset($_POST["cgstrate"])){
+		$cgstrate=$_POST["cgstrate"];
+		$cgstrate=implode(',', $cgstrate);
+	}
+	if(isset($_POST["sgstrate"])){
+		$sgstrate=$_POST["sgstrate"];
+		$sgstrate=implode(',', $sgstrate);
+	}
+	if(isset($_POST["alltotalamount"])){
+		$alltotalamount=$_POST["alltotalamount"];
+		$alltotalamount=implode(',', $alltotalamount);
+	}
 
-	  if (isset($_POST['accounttype'])) {
-		$accounttype              = mysqli_real_escape_string($mysqli,$_POST['accounttype']);		
-	  }	
-	  if (isset($_POST['subgrouptype'])) {
-		$subgrouptype             = mysqli_real_escape_string($mysqli,$_POST['subgrouptype']);		
-	  }	
-	  if (isset($_POST['group'])) {
-		$group                    = mysqli_real_escape_string($mysqli,$_POST['group']);		
-	  }	
-	  if (isset($_POST['ledgername'])) {
-		$ledgername               = mysqli_real_escape_string($mysqli,$_POST['ledgername']);		
-	  }		
-	if(isset($_POST['costcenter']) &&    $_POST['costcenter'] == 'Yes')		
+
+	 	if(isset($_POST['basis']) &&    $_POST['basis'] == 'Yes')		
 	{
-		$costcenter             = 0;
+		$basis   = "Yes";
 	}
 	else
 	{
-		$costcenter             = 1;
+		$basis     = "No";
 	}
+	
 
+// 	foreach($html->find('table') as $table){ 
+// 		// returns all the <tr> tag inside $table
+// 		$all_trs = $table->find('tr');
+// 		$count = count($all_trs);
+// 		echo "<script>alert($count);</script>";
+//    }
 
 
 	
-	// $qry = "INSERT INTO billing(
-	// 	billid, date,companydetails, customerdetails, 
-	// 	 shippingdetails, transportdetails, products, totalamount, , contactperson,
-	// 	  mobilenumber, whatsappnumber, emailid, gstnumber, isbranch, 
-	// 	  needmembership, membershipno, membershipvalue, issuedate,
-	// 	   expirydate, person1, mobile1, person2, mobile2, person3,
-	// 	    mobile3, subgroup, groupname, ledgername, costcentre, inventory) 
-	// VALUES (
-	// '".strip_tags($customercode)."',
-	// '".strip_tags($typeofcustomer)."',
-	// '".strip_tags($customername)."',
-	// '".strip_tags($address1)."',
-	// '".strip_tags($address2)."',
-	// '".strip_tags($district)."',
-	// '".strip_tags($pincode)."',
-	// '".strip_tags($state)."',
-	// '".strip_tags($country)."',
-	// '".strip_tags($contactperson)."',
-	// '".strip_tags($mobilenumber)."',
-	// '".strip_tags($whatsappnumber)."',
-	// '".strip_tags($emailid)."',
-	// '".strip_tags($gstnumber)."',
-	// '".strip_tags($isbranch)."',
-	// '".strip_tags($needmembership)."',
-	// '".strip_tags($membershipno)."',
-	// '".strip_tags($membershipvalue)."',
-	// '".strip_tags($issuedate)."',
-	// '".strip_tags($expirydate)."',
-	// '".strip_tags($mobile1)."',
-	// '".strip_tags($person1)."',  
-	// '".strip_tags($mobile2)."',
-	// '".strip_tags($person2)."',
-	// '".strip_tags($mobile3)."', 
-	// '".strip_tags($person3)."', 
-	// '".strip_tags($subgroup)."',
-	// '".strip_tags($groupname)."',
-	// '".strip_tags($ledgername)."', 
-	// '".strip_tags($costcentre)."',
-	// '".strip_tags($inventory)."');";		
 
-	// $res =$mysqli->query($qry)or die("Error in Query".$mysqli->error);
-	// $id = 0;
-	// $id = $mysqli->insert_id;
+	$companydetails = array("$companygst","$companyaddress","$companyphone","$companyemail");
+	// $companydetail= json_encode($comapnydetails);
+	$company=implode(",",$companydetails);
+	
+	$customerdetails = ["$customername","$customergst","$customeraddress","$referalno"];
+	// $customerdetail = json_encode($customerdetails);
+	$customer=implode(",",$customerdetails);
 
-	// return $id; 
+	$shippingdetails = ["$receivername","$receivergst","$receiveraddress","$receivercontact"];
+	// $shippingdetail = json_encode($shippingdetails);
+	$shipping=implode(",",$shippingdetails);
+
+
+	$transportdetails = ["$transportername ","$transportergst","$transporteraddress","$transporteremail","$vehiclenumber"];
+	// $transportdetail = json_encode($transportdetails);
+	$transport=implode(",",$transportdetails);
+
+
+
+	// $companydetails = $_POST['companydetails'];
+// foreach($companydetails as $companydetail){
+//   $companydetails = $companydetail; 
+// }
+
+	$qry = "INSERT INTO billing(
+		billid, date,companydetails, customerdetails, 
+		 shippingdetails, transportdetails,products,qty,rate,total,
+		 discount,taxablevalue,cgst,sgst,alltotalamount,
+		  totalamount, totaldiscount,
+		  totalcgst, totalsgst, otherchanges, totalinvoicevalue,basis) 
+	 VALUES (
+	 '$billid',
+	 '$date',
+	 '$company ',
+	 '$customer',
+	 '$shipping',
+	 '$transport',
+	 '$products',
+	 '$qty',
+	 '$rate',
+	 '$total',
+	 '$discount',
+	 '$taxablevalue',
+	 '$cgstrate',
+	 '$sgstrate',
+	 '$alltotalamount',
+	 '$totalamount',
+	 '$totaldiscount',
+	 '$totalcgst',
+	 '$totalsgst',
+	 '$otherchanges', 
+	 '$totalinvoicevalue',
+	 '$basis')";		
+
+	$res =$mysqli->query($qry)or die("Error in Query".$mysqli->error);
+	$id = 0;
+	$id = $mysqli->insert_id;
+
+	return $id; 
+
+
 }
-
-
-
-
-
 }
+// }
 	
 ?>

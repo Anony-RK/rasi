@@ -4,13 +4,21 @@ $subgrouplist=$userObj->getSubgroup($mysqli);
 $id=0;
  if(isset($_POST['submitbill']))
  {
-    
+  if(isset($_POST['tamilnadu']) &&  isset($_POST['tamilnadu']) == true) {
 		$addbilling = $userObj->addbilling($mysqli);   
   ?>
       <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
         <?php
 }
- 
+// else
+if(isset($_POST['others']) &&  isset($_POST['others']) == true )
+{
+  $addcgst = $userObj->addcgst($mysqli);   
+  ?>
+      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
+        <?php
+}
+}
  
 $del=0;
 if(isset($_GET['del']))
@@ -43,7 +51,7 @@ if($del>0)
 
 <!--------form start-->
 <form id = "taxmaster" name="taxmaster" action="" method="post" enctype="multipart/form-data"> 
-<input type="hidden" class="form-control" value="<?php if(isset($billid )) echo $billid ; ?>"  id="id" name="id" aria-describedby="id" placeholder="Enter id">
+<input type="hidden" class="form-control" value="<?php if(isset($id )) echo $id ; ?>"  id="id" name="id" aria-describedby="id" placeholder="Enter id">
 
  		<!-- Row start -->
          <div class="row gutters">
@@ -52,15 +60,11 @@ if($del>0)
                 <div class="card">
 					<div class="card-header d-flex justify-content-between mx-4">
 						<div class="card-title">Tax Invoice</div>
-                        <div class="card-title"   name="time"><span name="date" vlaue="<?php echo date("Y-M-d"); ?>"> <?php echo date("Y-M-d"); ?></span></div>
+            <?php $dates = date("Y-M-d"); ?>
+            <div class="card-title"><label name="date" value="<?php echo $dates ; ?>"><?php echo $dates ; ?></label></div>
 					</div>
                     <div class="card-body">
                               <div class="row">
-                                   <!-- jfhgdjhj -->
-                                        
-                               <!-- </div> 
-						</div> -->
-
                                 <div class="container-fluid">
                                 <h6 class="text-center">ON: for Companies Only</h6><br><br> 
                                 <h4 style="margin-left:360px;padding-bottom:10px;"><a style="border-bottom:2px solid gray;">Name Of Ther Supplier</a></h4>
@@ -70,46 +74,79 @@ if($del>0)
                                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
                                 <img src="./img/logo.png" alt="Feathers" style="width:300px;height:100px;">
                                 </div>
-                                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12 ">
 
+
+                                <script>
+
+function companydetails(str) {
+    if (str.length == 0) {
+        // document.getElementById("companygst").value = "";        
+        document.getElementById("companyaddress").value = "";
+        document.getElementById("companyphone").value = "";
+        document.getElementById("companyemail").value = "";
+        return;
+    }
+    else {
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+
+            if (this.readyState == 4 && 
+                    this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+
+                // document.getElementById("companygst").value = myObj[0];
+                document.getElementById("companyaddress").value = myObj[0];
+                document.getElementById("companyphone").value = myObj[1];
+                document.getElementById("companyemail").value = myObj[2];
+
+                
+            }
+        };
+
+        xmlhttp.open("GET", "companydetails.php?companygst=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
                                 <?php
-         include "api/iedit-config.php";  // Using database connection file here
-        $records = mysqli_query($mysqli, "SELECT companyname,gst,address,email,pincode, state,phonenumber From company WHERE companyname='comp1' ");  // Use select query here 
+        //  include "api/iedit-config.php";  // Using database connection file here
+        // $records = mysqli_query($mysqli, "SELECT companyname,gst,address,email,pincode, state,phonenumber From company WHERE companyname='comp1' ");  // Use select query here 
 
-        while($data = mysqli_fetch_array($records))
-        {?>
+        // while($data = mysqli_fetch_array($records))
+        // {?>
       
 
-                                <div class="d-flex ">
-                                    <b><h5>GSTIN      :</h5></b>
-                                    <!-- <select name="" id=""> -->
-                                    <label for=""  style="margin-left:80px;"> <span name="companygst" value="<?php  echo $data['gst']; ?>"> <?php  echo $data['gst']; ?></span></label><br>
-                                </div>
-                                <div class="d-flex ">
+                                <div class="d-flex justify-content-between">
+                                    <b><h5>GSTIN: <span class="text-danger">*</span></h5></b>
+                                    <input  class="form-control w-50"  style="margin-left:32px ;" onkeyup="companydetails(this.value)" name="companygst" id="companygst" placeholder="Enter GSTIN" /><br>
+                                </div> 
+                                <div class="d-flex justify-content-between">
                                     <b><h5>Address    :</h5></b>
-                                    <label for="" style="margin-left:64px;"><span name="companyaddress" value="<?php  echo $data['companyname'].",". $data['address'].",". $data['pincode'].",".$data['state']."."; ?>">
-                                    <?php  echo $data['companyname'].",". $data['address'].",". $data['pincode'].",".$data['state']."."; ?></span> </label><br>
+                                    <input   class="form-control w-50" style="margin-left:25px ;" name="companyaddress" readonly id="companyaddress"/><br>
                                 </div>
-                                <div class="d-flex  ">
+                                <div class="d-flex  justify-content-between">
                                     <b><h5>Contact No :</h5></b>
-                                    <label for=""  style="margin-left:40px;"> <span name="companyphone" value=" <?php  echo $data['phonenumber']; ?>"><?php  echo $data['phonenumber']; ?></span></label><br>
+                                    <input   class="form-control w-50" style="margin-left: ;" name="companyphone" readonly id="companyphone"/><br>
                                 </div>
-                                <div class="d-flex ">
+                                <div class="d-flex justify-content-between">
                                     <b><h5>E-Mail     :</h5></b>
-                                    <label for=""  style="margin-left:81px;"> <span name="companyemail" value="<?php  echo $data['email']; ?>"><?php  echo $data['email']; ?></span></label><br>
+                                    <input   class="form-control w-50" style="margin-left:40px ;" name="companyemail" readonly id="companyemail"/><br>
                                 </div>
-                                <?php  }	?> 
+                                <?php  //}	?> 
                                 </div>
 
-                  <div class="col-md-4 text-center">
-                  <?php $dates = date("Ymd"); ?>
-                  <h6><b>Invoice-Id :</b> <span value="<?php echo date("Ymd"); ?>" id="billid" name="billid"></span><?php echo date("Ymd"); ?></h6>
-					        </div><br><br><br>
+                  <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12   text-center">
+                  <?php  //$numbers =mt_rand(50, 500);?>
+                  <?php //$dates = date("Ymd"); ?>
+                  <h6><b>Invoice-Id :</b> <label value="<?php echo date("Ymd"); ?>" id="billid" name="billid"><?php echo date("Ymd"); ?></label></h6>
+					        </div><br><br><br><br><br><br>
                   
                   
                   </div>
 					<!-- Row end -->
-                    <div class="row gutters">
+                    <div class="row gutters mt-4">
                        <div class="col-md-4">
                                   <table  class="table custom-table ">
 										<thead>
@@ -125,12 +162,10 @@ if($del>0)
 
         function GetDetail(str) {
             if (str.length == 0) {
-                document.getElementById("customername").value = "";
-              
+                document.getElementById("customername").value = "";        
                 document.getElementById("customeraddress").value = "";
                 document.getElementById("customergst").value = "";
                 document.getElementById("mobilenumber").value = "";
-                // document.getElementById("last_name").value = "";
                 return;
             }
             else {
@@ -161,19 +196,19 @@ if($del>0)
 
                                    <tr>
                                       <td>Purchaser Name</td>
-                                      <td><input type="text" class="form-control" id="customername" name="customername" value="<?php  //echo $data['customername']; ?>"></td>											 																						  
+                                      <td><input type="text" class="form-control" id="customername" name="customername" ></td>											 																						  
                                     </tr>
                                     <tr>
                                       <td>GSTIN</td>
-                                      <td><input type="text" class="form-control" id="customergst" name="customergst" value=" <?php  //echo $data['gstnumber']; ?>"></td>  
+                                      <td><input type="text" class="form-control" id="customergst" name="customergst" ></td>  
                                     </tr>
                                     <tr>
                                       <td>Address</td>
-                                      <td><input type="text" class="form-control" id="customeraddress" name="customeraddress"  value=" <?php // echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
+                                      <td><input type="text" class="form-control" id="customeraddress" name="customeraddress" ></td>  
                                     </tr>
                                     <tr>
-                                      <td>Ref.No</td>
-                                      <td><input type="text" class="form-control" onkeyup="GetDetail(this.value)" id="referalno" name="referalno" value="<?php  //echo $data['customercode']; ?>" placeholder="Enter Customerid"></td>  
+                                      <td>Ref.No <span class="text-danger">*</span></td>
+                                      <td><input type="text" class="form-control" onkeyup="GetDetail(this.value)" id="referalno" name="referalno" placeholder="Enter Customerid"></td>  
                                     </tr>
               <?php //}?>
 										  
@@ -193,19 +228,19 @@ if($del>0)
   
 										   <tr>
 											  <td>Receiver Name</td>
-											  <td><input type="text" class="form-control" id="receivername" name="receivername" value="<?php  //echo $data['customername']; ?>"></td>											 																						  
+											  <td><input type="text" class="form-control" id="receivername" name="receivername" ></td>											 																						  
 											</tr>
                                             <tr>
 											  <td>GSTIN</td>
-											  <td><input type="text" class="form-control" id="receivergst" name="receivergst" value=" <?php  //echo $data['gstnumber']; ?>" ></td>  
+											  <td><input type="text" class="form-control" id="receivergst" name="receivergst"  ></td>  
 											</tr>
                                             <tr>
 											  <td>Delivery Address</td>
-											  <td><input type="text" class="form-control" id="receiveraddress" name="receiveraddress"  value="<?php  //echo $data['address1'].",". $data['address2'].",". $data['district'].",".$data['state'].",".$data['country'].",".$data['pincode']; ?>" ></td>  
+											  <td><input type="text" class="form-control" id="receiveraddress" name="receiveraddress"></td>  
 											</tr>
                                             <tr>
 											  <td>Contact No</td>
-											  <td><input type="text" class="form-control" id="mobilenumber" name="receivercontact" value="<?php // echo $data['mobilenumber']; ?>"></td>  
+											  <td><input type="text" class="form-control" id="mobilenumber" name="receivercontact"></td>  
 											</tr>
                       <?php  //}?>
                      
@@ -224,23 +259,23 @@ if($del>0)
 										<tbody>
 										   <tr>
 											  <td>Transporter's Name</td>
-											  <td><input type="text" class="form-control" name="transportername"  value=""></td>											 																						  
+											  <td><input type="text" class="form-control" name="transportername"  ></td>											 																						  
 											</tr>
                                             <tr>
 											  <td>GSTIN</td>
-											  <td><input type="text" class="form-control" name="transportergst" value=""></td>  
+											  <td><input type="text" class="form-control" name="transportergst" ></td>  
 											</tr>
                                             <tr>
 											  <td>Address</td>
-											  <td><input type="text" class="form-control" name="transporteraddress" value=""></td>  
+											  <td><input type="text" class="form-control" name="transporteraddress" ></td>  
 											</tr>
                                             <tr>
 											  <td>E-Way Bill no</td>
-											  <td><input type="text" class="form-control" name="transporteremail" value=""></td>  
+											  <td><input type="text" class="form-control" name="transporteremail" ></td>  
 											</tr>
                                             <tr>
 											  <td>Vehicle no</td>
-											  <td><input type="text" class="form-control" name="vehiclenumber" value=""></td>  
+											  <td><input type="text" class="form-control" name="vehiclenumber" ></td>  
 											</tr>
 										</tbody>
 						    	</table>
@@ -260,11 +295,11 @@ if($del>0)
                           </div> -->
                         
                        <div class="form-check align-items-center d-flex">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="tamilnadu" checked>
+                          <input class="form-check-input" type="radio" name="tamilnadu" id="tamilnadu" checked>
                           <label class="form-check-label ml-2" for="flexRadioDefault1"> Tamilnadu</label> 
                         </div>
                         <div class="form-check align-items-center d-flex">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="others">
+                          <input class="form-check-input" type="radio" name="others" id="others">
                           <label class="form-check-label ml-2" for="flexRadioDefault2"> Others </label>
                         </div>
                         </div>
@@ -432,7 +467,7 @@ if($del>0)
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Invoice Value (In Words)</p>
                         <div class="input-group mb-3 w-50">
-                        <input type="text" class="form-control w-50 " id="igstinvoiceinword" name="igstinvoiceinword">
+                        <input type="text" class="form-control w-50 " id="igstinvoiceinword" name="invoiceinword">
                           <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
@@ -447,7 +482,7 @@ if($del>0)
                         </div><div class="col-md-8">
                         <div class="custom-control ">
                                 <!-- <input type="checkbox" id="basis" name="basis" class="form-control" value="Yes"> -->
-                                <input type="checkbox" aria-label="Checkbox for following text input">
+                                <input type="checkbox" aria-label="Checkbox for following text input" value="Yes">
                                 <label for="formGroupExampleInput2">Yes/No ?</label>		
                         </div>
                   </div>

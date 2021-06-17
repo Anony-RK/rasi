@@ -70,7 +70,7 @@ var markup = "<option value=''>Select a Item</option>";
 var i = 1;
 var appendTxt = 
 "<tr><td>"+  i++  +"</td>" +
-"<td><select id='description' name='description[]' class='Partcode chosen-select form-control'>" + markup + " </select></td>" +
+"<td><select id='products' name='products[]' class='Partcode chosen-select form-control'>" + markup + " </select></td>" +
 "<td><input  type='text'  class='form-control col-xs-12 col-sm-12 descrb qty'  id='qty' name='qty[]' /></td>" +
 "<td><input  type='text'  class='form-control col-xs-12 col-sm-12 rate'  id='rate' name='rate[]'  /></td>" +
 "<td><input type='number'  class='form-control total' readonly  name='total[]' placeholder='0' id='total' /></td>" +
@@ -118,7 +118,7 @@ success: function (data) {
   
    var appendTxt =   
    "<tr><td>"+  count  +"</td>"+
-   "<td><select id='description' name='description[]' class='Partcode chosen-select form-control'>" + markup1 + " </select></td>" +
+   "<td><select id='products' name='products[]' class='Partcode chosen-select form-control'>" + markup1 + " </select></td>" +
    "<td><input  type='number'  class='form-control col-xs-12 col-sm-12 descrb qty'  id='qty' name='qty[]' /></td>" +
    "<td><input  type='number'  class='form-control col-xs-12 col-sm-12 rate'  id='rate' name='rate[]'   /></td>" +
    "<td><input type='number'  class='form-control total' readonly  name='total[]' placeholder='0' id='total' /></td>" +
@@ -331,12 +331,12 @@ var markup3 = "<option value=''>Select a Item</option>";
    success: function (data) {
 
      $.each(data, function (i, item) {
-       markup += "<option value=" + item + ">" + item + "</option>";
+       markup3 += "<option value=" + item + ">" + item + "</option>";
    });
 var i = 1;
 var appendTxt = 
 "<tr><td>"+  i++  +"</td>" +
-"<td><select id='description' name='description[]' class='Partcode chosen-select form-control'>" + markup3 + " </select></td>" +
+"<td><select id='products' name='products[]' class='Partcode chosen-select form-control'>" + markup3 + " </select></td>" +
 "<td><input  type='text'  class='form-control col-xs-12 col-sm-12 descrb igstqty'  id='igstqty' name='igstqty[]' /></td>" +
 "<td><input  type='text'  class='form-control col-xs-12 col-sm-12 igstrate'  id='igstrate' name='igstrate[]'  /></td>" +
 "<td><input type='number'  class='form-control igsttotal' readonly  name='igsttotal[]' placeholder='0' id='igsttotal' /></td>" +
@@ -357,7 +357,7 @@ $('#igsttable').find('tbody').append(appendTxt);
 
 
 var markup4 = "<option value=''>Select a Item</option>";
-$(document).on("keydown", '#discount', function (e) {
+$(document).on("keydown", '#igstdiscount', function (e) {
 var currentrow = $(this).closest('tr');
 var key1 = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
 if (key1 == 13 && $(this).closest("tr").is(":last-child")) {
@@ -371,11 +371,11 @@ e.preventDefault();
 success: function (data) {   
   
    $.each(data, function (i, item) {
-       markup1 += "<option value=" + item + ">" + item + "</option>";
+       markup4 += "<option value=" + item + ">" + item + "</option>";
    });
 
 
-   var table = document.getElementById("billstable");
+   var table = document.getElementById("igsttable");
     
    var rowCount = table.rows.length;
 //    var row = table.insertRow(rowCount);
@@ -384,7 +384,7 @@ success: function (data) {
   
    var appendTxt =   
    "<tr><td>"+  count  +"</td>"+
-   "<td><select id='description' name='description[]' class='Partcode chosen-select form-control'>" + markup4 + " </select></td>" +
+   "<td><select id='products' name='products[]' class='Partcode chosen-select form-control'>" + markup4 + " </select></td>" +
    "<td><input  type='number'  class='form-control col-xs-12 col-sm-12 descrb igstqty'  id='igstqty' name='igstqty[]' /></td>" +
    "<td><input  type='number'  class='form-control col-xs-12 col-sm-12 igstrate'  id='igstrate' name='igstrate[]'   /></td>" +
    "<td><input type='number'  class='form-control igsttotal' readonly  name='igsttotal[]' placeholder='0' id='igsttotal' /></td>" +
@@ -406,7 +406,7 @@ markup1="<option value=''>Select a Item</option>";
 }
 });
 
-$(document).on("keyup", '.igstdiscount', function (e){
+$(document).on("keyup", '.igstrate', function (e){
 
     var  igstrate = $(this).val();
     var  igstqty= $(this).parent().parent().find(".igstqty").val();
@@ -428,7 +428,7 @@ $(document).on("keyup", '.igstdiscount', function (e){
     // $(document).on("keyup", '.igstrate', function (e){
     var  igstdiscount = $(this).val();
 
-
+    var igsttotals = $(this).parent().parent().find(".igsttotal").val();
     // console.log(discount);
     // var  igstqty= $(this).parent().parent().find(".igstqty").val();
     // console.log(qty);
@@ -440,8 +440,8 @@ $(document).on("keyup", '.igstdiscount', function (e){
     // if (discount != "" && discount != 0) {
     //     discount = parseInt(discount);
         
-        igsttaxabletot = igsttotal-igstdiscount;
-    //  console.log(taxabletot);
+        igsttaxabletot = igsttotals-igstdiscount;
+     console.log(igsttaxabletot);
      $(this).parent().parent().find(".igsttaxablevalue").val(igsttaxabletot);
 
      var igsttaxablevalue = $(this).parent().parent().find(".igsttaxablevalue").val();
@@ -555,27 +555,17 @@ var igsttotalval =0;
     // var totalinvoice = otherchanges + totals;
     $("#igsttotalinvoicevalue").val(igsttotalcash);
 
-
-
-
 }
-
-
-     
-
-
 
 });
 
 $(document).on('keyup', '#otherchanges', function (e) {
      var igstotherchanges = $("#igstotherchanges").val();
      var igsttotals = $("#igsttotalamount").val();
-    if(igstotherchanges == 0 || igstotherchanges == ""){
-        $("#igsttotalinvoicevalue").val(igsttotalcash);
-    }else {
+    
      var igsttotalinvoice = parseInt(igsttotals) - parseInt(igstotherchanges);
      $("#igsttotalinvoicevalue").val(igsttotalinvoice);
-    }
+    
  
 
 });
