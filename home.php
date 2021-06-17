@@ -187,13 +187,35 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 				<?php include "include/templates/editgoodsreceivingnote.php"?>
                 <?php   } ?>
 
-					<!-- Bank-->
+					<!-- Bill-->
 					<?php   if($current_page == 'billing') { ?>
 				<?php include "include/templates/billing.php"?>
                 <?php   } ?>
                 <?php   if($current_page == 'editbilling') { ?>
 				<?php include "include/templates/editbilling.php"?>
                 <?php   } ?>
+					<!-----Bill2--->
+				<?php   if($current_page == 'billing2') { ?>
+				<?php include "include/templates/billing2.php"?>
+                <?php   } ?>
+                <?php   if($current_page == 'editbilling') { ?>
+				<?php include "include/templates/editbilling2.php"?>
+                <?php   } ?>
+				<!-----Bill3--->
+				<?php   if($current_page == 'billing3') { ?>
+				<?php include "include/templates/billing3.php"?>
+                <?php   } ?>
+                <?php   if($current_page == 'editbilling') { ?>
+				<?php include "include/templates/editbilling.php"?>
+                <?php   } ?>
+				<!-----Bill4--->
+				<?php   if($current_page == 'billing4') { ?>
+				<?php include "include/templates/billing4.php"?>
+                <?php   } ?>
+                <?php   if($current_page == 'editbilling') { ?>
+				<?php include "include/templates/editbilling.php"?>
+                <?php   } ?>
+
 
 				<!-- Main container end -->
     

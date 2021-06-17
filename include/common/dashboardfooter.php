@@ -337,7 +337,66 @@
 		[10, 25, 50, "All"]
 	]
 	});
+
+
+
+	// billing2 table
+
+	var billing2_info = $('#billing2_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxbilling2.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
+
+
+	// billing3 table
+
+	var billing3_info = $('#billing3_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxbilling3.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
 	$('#search').change(function(){
+		billing3_info.draw();
+		billing2_info.draw();
 		billing_info.draw();
         branch_info.draw();
 		company_info.draw();
@@ -372,4 +431,10 @@
 		<script src="js/finance.js"></script>
 <?php } if($current_page == 'billing') { ?>
 		<script src="js/billing.js"></script>
+<?php } if($current_page == 'billing2') { ?>
+		<script src="js/billing2.js"></script>
+<?php } if($current_page == 'billing3') { ?>
+		<script src="js/billing3.js"></script>
+<?php } if($current_page == 'billing4') { ?>
+		<script src="js/billing4.js"></script>
 <?php } ?>

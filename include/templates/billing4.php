@@ -7,15 +7,14 @@ $id=0;
   if(isset($_POST['others']) &&  isset($_POST['others']) == true) {
 		$addbilling = $userObj->addbilling($mysqli);   
   ?>
-      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
+      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling4&msc=1';</script> 
         <?php
 }
-//  else
- if(isset($_POST['tamilnadu']) &&  isset($_POST['tamilnadu']) == true )
+ elseif(isset($_POST['tamilnadu']) &&  isset($_POST['tamilnadu']) == true )
 {
   $addcgst = $userObj->addcgst($mysqli);   
   ?>
-      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
+      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling4&msc=1';</script> 
         <?php
 }
 }
@@ -29,7 +28,7 @@ if($del>0)
 {
 	$deletebilliing = $userObj->deletebilliing($mysqli,$del); 
 	?>
-	<script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=3';</script>
+	<script>location.href='<?php echo $HOSTPATH;  ?>editbilling4&msc=3';</script>
 <?php	} ?>
 
 <!-- Page header start -->
@@ -59,120 +58,78 @@ if($del>0)
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
 					<div class="card-header d-flex justify-content-between mx-4">
-						<div class="card-title">Tax Invoice</div>
+         <div class="container">
+         <div class="row">
+              <div class="col-xl-6 col-md-6 col-sm-6">
+
+              <div class="logo">
+                      <img src="./img/logo.png" alt="Feathers" style="width:200px;height:50px;">
+                   </div>
+              </div>
+              <div class="col-xl-6 col-md-6 col-sm-6">
+              <h1 class="colors text-right"> Invoice</h1>
+
+              </div>
+          </div>
+
+         </div>
+
 					</div>
+          <hr class="border colors border-5" style="color:#af772a;">
+
                     <div class="card-body">
                               <div class="row">
                                 <div class="container-fluid">
-                                <h6 class="text-center">ON: for Companies Only</h6><br><br> 
-                                <h4 style="margin-left:360px;padding-bottom:10px;"><a style="border-bottom:2px solid gray;">Name Of Ther Supplier</a></h4>
+                                <!-- <h6 class="text-center">ON: for Companies Only</h6><br><br>  -->
+                                <!-- <h4 style="margin-left:360px;padding-bottom:10px;"><a style="border-bottom:2px solid gray;">Name Of Ther Supplier</a></h4> -->
 
 					  <!-- Row start  -->
-					            <div class="row gutters ">
-                                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
-                                <img src="./img/logo.png" alt="Feathers" style="width:300px;height:80px;">
+
+
+                      <div class="row">
+                            <div class="col-xl-2 col-md-2">
+                                   
+                            
+                            </div>
+                            <div class="col-xl-4 col-md-3">
+                                    <div class="address">
+                                    <p><h5><b>12,Rasi Electronics,<br>Vandavasi,thiruvannamalai,<br>600342.</b></h5></p>
+                                    </div>
+                            </div>
+                            <div class="col-xl-2 col-md-3">
+                                
+                            </div>
+                            <div class="col-xl-4 col-md-4">
+                              <?php  $numbers = mt_rand(5000000, 50000000000);?>
+                                <div class="invoiceid d-flex">
+                                    <h6><b>Invoice-Id :</b></h6>
+                                    <?php //$dates = date("Ymd"); ?>
+                                    <label class="ml-4" value="<?php echo $numbers; ?>" id="billid" name="billid"><?php echo $numbers; ?></label>
                                 </div>
-                                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div class="date d-flex">
+                                <h6><b>Date :</b></h6>
+                                <?php $dates = date("Y-M-d"); ?>
+                                <label class="ml-4" name="date" value="<?php echo $dates ; ?>"><?php echo $dates ; ?></label>
 
-
-                                <script>
-
-function companydetails(str) {
-    if (str.length == 0) {
-        // document.getElementById("companygst").value = "";        
-        document.getElementById("companyaddress").value = "";
-        document.getElementById("companyphone").value = "";
-        document.getElementById("companyemail").value = "";
-        return;
-    }
-    else {
-
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-
-            if (this.readyState == 4 && 
-                    this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
-
-                // document.getElementById("companygst").value = myObj[0];
-                document.getElementById("companyaddress").value = myObj[0];
-                document.getElementById("companyphone").value = myObj[1];
-                document.getElementById("companyemail").value = myObj[2];
-
-                
-            }
-        };
-
-        xmlhttp.open("GET", "companydetails.php?companygst=" + str, true);
-        xmlhttp.send();
-    }
-}
-</script>
-                                <?php
-        //  include "api/iedit-config.php";  // Using database connection file here
-        // $records = mysqli_query($mysqli, "SELECT companyname,gst,address,email,pincode, state,phonenumber From company WHERE companyname='comp1' ");  // Use select query here 
-
-        // while($data = mysqli_fetch_array($records))
-        // {?>
-      <style>
-      .text-style{
+                            </div>
+                      
+                      </div>
+ 
+      
+<style>
+.text-style{
     border:none !important;
     outline:none  !important;
     background-color:transparent !important;
     border-bottom:1px solid black !important;
 }
-      </style>
-
-                                <div class="d-flex justify-content-between">
-                                    <b><h5>GSTIN: <span class="text-danger">*</span></h5></b>
-                                    <input  class="form-control w-50 text-style"  style="margin-left:32px ;" onkeyup="companydetails(this.value)" name="companygst" id="companygst" placeholder="Enter GSTIN" /><br>
-                                </div> 
-                                <div class="d-flex justify-content-between">
-                                    <b><h5>Address    :</h5></b>
-                                    <input   class="form-control w-50 text-style" style="margin-left:25px ;" name="companyaddress" readonly id="companyaddress"/><br>
-                                </div>
-                                <div class="d-flex  justify-content-between">
-                                    <b><h5>Contact No :</h5></b>
-                                    <input   class="form-control w-50 text-style" style="margin-left: ;" name="companyphone" readonly id="companyphone"/><br>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <b><h5>E-Mail     :</h5></b>
-                                    <input   class="form-control w-50 text-style" style="margin-left:40px ;" name="companyemail" readonly id="companyemail"/><br>
-                                </div>
-                                <?php  //}	?> 
-                                </div>
-
-                  <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12   text-center">
-                  <?php  $numbers = mt_rand(5000000, 50000000000);?>
-                  <div class="invoiceid d-flex">
-                    <h6><b>Invoice-Id :</b></h6>
-                    <?php //$dates = date("Ymd"); ?>
-                    <label class="ml-4" value="<?php echo $numbers; ?>" id="billid" name="billid"><?php echo $numbers; ?></label>
-                  </div>
-                  <div class="date d-flex">
-                  <h6><b>Date :</b></h6>
-                  <?php $dates = date("Y-M-d"); ?>
-                  <div class="card-title ml-4"><label class="ml-4" name="date" value="<?php echo $dates ; ?>"><?php echo $dates ; ?></label></div>
-
-                  </div>
+.colors{
+    color:#af772a;
+}
+</style>                        
+                 
+                  </div> 
                   
-                  </div><br><br><br><br><br><br>
-                  
-                  
-                  </div>
-					<!-- Row end -->
-                    <div class="row gutters mt-4">
-                       <div class="col-md-4">
-                                  <table  class="table custom-table ">
-										<thead>
-											<tr>
-											  <th colspan="4">Billing Details</th>
-											 
-											  
-											</tr>
-										</thead>
-										<tbody>
-
 <script>
 
         function GetDetail(str) {
@@ -196,9 +153,7 @@ function companydetails(str) {
                         document.getElementById("customergst").value = myObj[1];
                         document.getElementById("customeraddress").value = myObj[2];
                         document.getElementById("mobilenumber").value = myObj[3];
-
                         document.getElementById("receivername").value = myObj[0];
-                        document.getElementById("receivergst").value = myObj[1];
                         document.getElementById("receiveraddress").value = myObj[2];
                     }
                 };
@@ -208,108 +163,62 @@ function companydetails(str) {
             }
         }
 </script>
+       
+                                <hr class="border colors border-5" style="color:#af772a;">
 
-                                   <tr>
-                                      <td>Purchaser Name</td>
-                                      <td><input type="text" class="form-control" id="customername" name="customername" ></td>											 																						  
-                                    </tr>
-                                    <tr>
-                                      <td>GSTIN</td>
-                                      <td><input type="text" class="form-control" id="customergst" name="customergst" ></td>  
-                                    </tr>
-                                    <tr>
-                                      <td>Address</td>
-                                      <td><input type="text" class="form-control" id="customeraddress" name="customeraddress" ></td>  
-                                    </tr>
-                                    <tr>
-                                      <td>Ref.No <span class="text-danger">*</span></td>
-                                      <td><input type="text" class="form-control" onkeyup="GetDetail(this.value)" id="referalno" name="referalno" placeholder="Enter Customerid"></td>  
-                                    </tr>
-              <?php //}?>
-										  
-										</tbody>
-						    	</table>
-                       </div>
-                       <div class="col-md-4">
-                       <table  class="table custom-table">
-										<thead>
-											<tr>
-											  <th colspan="4">Shipping Details</th>
-											 
-											  
-											</tr>
-										</thead>
-										<tbody>
-  
-										   <tr>
-											  <td>Receiver Name</td>
-											  <td><input type="text" class="form-control" id="receivername" name="receivername" ></td>											 																						  
-											</tr>
-                                            <tr>
-											  <td>GSTIN</td>
-											  <td><input type="text" class="form-control" id="receivergst" name="receivergst"  ></td>  
-											</tr>
-                                            <tr>
-											  <td>Delivery Address</td>
-											  <td><input type="text" class="form-control" id="receiveraddress" name="receiveraddress"></td>  
-											</tr>
-                                            <tr>
-											  <td>Contact No</td>
-											  <td><input type="text" class="form-control" id="mobilenumber" name="receivercontact"></td>  
-											</tr>
-                      <?php  //}?>
-                     
-										</tbody>
-						    	</table>
-                       </div>
-                       <div class="col-md-4">
-                       <table  class="table custom-table">
-										<thead>
-											<tr>
-											  <th colspan="4">Transport Details</th>
-											 
-											  
-											</tr>
-										</thead>
-										<tbody>
-										   <tr>
-											  <td>Transporter's Name</td>
-											  <td><input type="text" class="form-control" name="transportername"  ></td>											 																						  
-											</tr>
-                                            <tr>
-											  <td>GSTIN</td>
-											  <td><input type="text" class="form-control" name="transportergst" ></td>  
-											</tr>
-                                            <tr>
-											  <td>Address</td>
-											  <td><input type="text" class="form-control" name="transporteraddress" ></td>  
-											</tr>
-                                            <tr>
-											  <td>E-Way Bill no</td>
-											  <td><input type="text" class="form-control" name="transporteremail" ></td>  
-											</tr>
-                                            <tr>
-											  <td>Vehicle no</td>
-											  <td><input type="text" class="form-control" name="vehiclenumber" ></td>  
-											</tr>
-										</tbody>
-						    	</table>
-                       </div>
+                       <div class="row">
+                         <div class="col-md-6">
+                         <h5 class="colors border-bottom ml-4 mb-2">Bill To</h5>
+                                <div class="d-flex justify-content-between ml-4">
+                                    <b><h6>Customer Name:</h6></b>
+                                    <input type="text" class="form-control w-50 text-style" readonly id="customername" name="customername" >											 																						  
+                                </div> 
+                                <div class="d-flex justify-content-between ml-4">
+                                    <b><h6>Address:</h6></b>
+                                    <input type="text" class="form-control w-50 text-style" readonly id="customergst" name="customergst" >  
+                                </div>
+                                <div class="d-flex  justify-content-between ml-4 ">
+                                    <b><h6>Contact No :</h6></b>
+                                    <input type="text" class="form-control w-50 text-style" readonly id="customeraddress" name="customeraddress" >  
+                                </div>
+                                <div class="d-flex justify-content-between ml-4 ">
+                                    <b class="d-flex align-items-center"><h6>Ref.No</h6><span class="text-danger ml-1">*</span></b>
+                                    <input type="text" class="form-control w-50 text-style" onkeyup="GetDetail(this.value)" id="referalno" name="referalno" placeholder="Enter Customerid"> 
+                                </div>
+                            </div>                        
+                         <!-- </div> -->
 
-                    </div>
-                    <div class="selectstate d-flex align-items-center">
+
+
+                         <div class="col-md-6">
+                         <h5 class="colors border-bottom ml-4 mb-2">Shipping To </h5>
+                                <div class="d-flex justify-content-between ml-4">
+                                    <b><h6>Customer Name:</h6></b>
+                                    <input type="text" class="form-control w-50 text-style" readonly id="receivername" name="customername" >											 																						  
+                                </div> 
+                                <div class="d-flex justify-content-between ml-4">
+                                    <b><h6>Address:</h6></b>
+                                    <input type="text" class="form-control w-50 text-style" readonly id="receiveraddress" name="customergst" >  
+                                </div>
+                                <div class="d-flex  justify-content-between ml-4 ">
+                                    <b><h6>Contact No :</h6></b>
+                                    <input type="text" class="form-control w-50 text-style" readonly id="mobilenumber" name="customeraddress" >  
+                                </div>
+                                <!-- <div class="d-flex justify-content-between ml-4 ">
+                                    <b class="d-flex align-items-center"><h6>Ref.No</h6><span class="text-danger ml-1">*</span></b>
+                                    <input type="text" class="form-control w-50 text-style" id="referalno" name="referalno" placeholder="Enter Customerid"> 
+                                </div> -->
+
+                            </div>
+
+                         
+                         </div>
+                       <!-- </div> -->
+                      
+                    <div class="selectstate d-flex align-items-center mt-4">
                         <p><b>Delivery State  ?</b></p>
                         <div class="checks ml-4 d-flex">
-                         <!--  <div class="state d-flex">
-                              <input type="radio" >
-                              <label for="" id="tamilnadu" class="ml-2">TamilNadu</label>
-                          </div>
-                          <div class="state d-flex ml-4">
-                              <input type="radio" >
-                              <label for="" id="others" class="ml-2">Others</label>
-                          </div> -->
-
-<div class="form-check align-items-center d-flex ">
+<div class="form-check align-items-center d-flex">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="tamilnadu" checked>
   <label class="form-check-label ml-2" for="flexRadioDefault1">
     Tamil Nadu
@@ -506,22 +415,22 @@ function companydetails(str) {
                     </div><br>
                   <div class="row gutters">
                     <div class="col-md-4">
-                        <p> Weather Tax is Payable on reverse change Basis? </p>
+                        <!-- <p> Weather Tax is Payable on reverse change Basis? </p> -->
                         </div><div class="col-md-8">
                         <div class="custom-control ">
                                 <!-- <input type="checkbox" id="basis" name="basis" class="form-control" value="Yes"> -->
-                                <input type="checkbox" aria-label="Checkbox for following text input" value="Yes">
-                                <label for="formGroupExampleInput2">Yes/No ?</label>		
+                                <!-- <input type="checkbox" aria-label="Checkbox for following text input" value="Yes"> -->
+                                <!-- <label for="formGroupExampleInput2">Yes/No ?</label>		 -->
                         </div>
                   </div>
                 </div><br>
                 <div class="row gutters d-flex justify-content-between mx-4">
-                <h5>Payment Terms </h5>
-                <h5>Name Of Supplier</h5>
-                </div><br>
-                <div class="row gutters d-flex ml-4">
+                <!-- <h5 class="colors border-bottom">Payment Terms </h5> -->
+                <!-- <h5>Name Of Supplier</h5> -->
+                <!-- </div><br> -->
+                <!-- <div class="row gutters d-flex ml-4"> -->
                
-                    <div class="col-md-6 ">
+                    <!-- <div class="col-md-6 ">
                         <h6>In favour Of :</h6>
                         <h6>Bank & Branch:</h6>
                         <h6>Account No:</h6>
@@ -529,14 +438,14 @@ function companydetails(str) {
                         <h6>Comments: </h6>
                     </div>
                     <div class="col-md-6"></div>
-                    </div>
+                    </div> -->
 
-				</div>
+				<!-- </div> -->
 
                <div class="container ">
                <div class="row gutters mt-4 justify-content-between">        
                    <div class="col-md-6 ">
-                        <h5>Terms And Conditions</h5>
+                        <h5  class="colors">Terms And Conditions</h5>
 
                         <p>1.   E. & O .E</p>
                         <p>2. Goods Once Sold Will not be taken back or exchanged</p>
@@ -551,8 +460,14 @@ function companydetails(str) {
                </div>
 
                </div>
+
+              
 				</div>
-		
+                <div class="row mt-4">
+               <div class="col-md-12 text-center">
+                 <h5><b class=" colors border-bottom">Thankyou For Your Business!</b></h5>
+               </div>
+               </div>
                    <!-- <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
                        <div class="custom-control custom-checkbox mt-4">
                             <input type="checkbox" value="Yes"  <?php  //if($status==0) { echo 'checked'; //} ?> tabindex="25"  class="custom-control-input" id="status" name="status">

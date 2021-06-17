@@ -13,23 +13,6 @@
 
 
 // IGST or CGST/SGST
-// $(document).ready(function() {
-
-//     $("#igsttable").hide();
-
-//     $("#flexRadioDefault1").click(function () {
-//    $("#billstable").show();
-//     $("#igsttable").hide();
-   
-//    });
-
-//     $("#flexRadioDefault2").click(function () {
-//     $("#igsttable").show();
-//     $("#billstable").hide();
-
-//    });
-//   });
-
 
 $(document).ready(function() {
 
