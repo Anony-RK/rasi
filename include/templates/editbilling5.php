@@ -4,7 +4,7 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">Branch Listing</li>
 					</ol>					
-					<a href="billing2">
+					<a href="billing5">
 					<button type="button"  tabindex="1" id="submitbranchbtn" name="submitbranchnew"   class="btn btn-primary"><span class="icon-add"></span>&nbsp Add Bill</button>
 					</a>
 				</div>
@@ -49,21 +49,22 @@ if($mscid==3)
 }
 }
 ?>
-									<table id="billing2_info" class="table custom-table">
+									<table id="billing5_info" class="table custom-table">
 										<thead>
 											<tr>
 											  <th>Bill Id</th>
 											  <th>date</th>											  
-											  <th>customer Details</th>											 
+											  <th>customer Details</th>	
+                                              <th>shipping Details</th>											 
 											  <th>Products</th>
 											  <th>Quantity</th>
 											  <th>Rate</th>
 											  <th>Total</th>
 											  <th>Discount</th>
 											  <th>Taxable Value</th>
-											  <th>CGST</th>
+											  <!-- <th>CGST</th>
 											  <th>SGST</th>
-											  <th>IGST</th>
+											  <th>IGST</th> -->
 											  <th>All Total Amount</th>										  
 											  <th>Total Amount</th>
 											  <th>Discount Amount</th>

@@ -198,22 +198,31 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 				<?php   if($current_page == 'billing2') { ?>
 				<?php include "include/templates/billing2.php"?>
                 <?php   } ?>
-                <?php   if($current_page == 'editbilling') { ?>
+                <?php   if($current_page == 'editbilling2') { ?>
 				<?php include "include/templates/editbilling2.php"?>
                 <?php   } ?>
 				<!-----Bill3--->
 				<?php   if($current_page == 'billing3') { ?>
 				<?php include "include/templates/billing3.php"?>
                 <?php   } ?>
-                <?php   if($current_page == 'editbilling') { ?>
-				<?php include "include/templates/editbilling.php"?>
+                <?php   if($current_page == 'editbilling3') { ?>
+				<?php include "include/templates/editbilling3.php"?>
                 <?php   } ?>
 				<!-----Bill4--->
 				<?php   if($current_page == 'billing4') { ?>
 				<?php include "include/templates/billing4.php"?>
                 <?php   } ?>
-                <?php   if($current_page == 'editbilling') { ?>
-				<?php include "include/templates/editbilling.php"?>
+                <?php   if($current_page == 'editbilling4') { ?>
+				<?php include "include/templates/editbilling4.php"?>
+                <?php   } ?>
+
+
+				<!-----Bill4--->
+				<?php   if($current_page == 'billing5') { ?>
+				<?php include "include/templates/billing5.php"?>
+                <?php   } ?>
+                <?php   if($current_page == 'editbilling5') { ?>
+				<?php include "include/templates/editbilling5.php"?>
                 <?php   } ?>
 
 

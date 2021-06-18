@@ -12,7 +12,7 @@ if ($customercode !== "") {
     // last_name FROM userdata WHERE user_id='$user_id'");
 
  $data = mysqli_query($mysqli, "SELECT customername,gstnumber,address1,address2,district,mobilenumber,
-        state,country,pincode From customer WHERE customercode = '$customercode'") or die (mysqli_error()); 
+        state,country,pincode,customercode From customer WHERE customercode = '$customercode'") or die (mysqli_error()); 
       
   
     $row = mysqli_fetch_array($data);
@@ -26,13 +26,13 @@ if ($customercode !== "") {
     $country = $row["country"];
     $pincode = $row["pincode"];
     $mobilenumber = $row["mobilenumber"];
-    // $gstnumber = $row["gstnumber"];
+    $customercode = $row["customercode"];
     // $gstnumber = $row["gstnumber"];
 
 
 }
   
-$result = array("$customername", "$gstnumber" ,array( "$address1 ", "$address2", "$district", "$state", "$country","$pincode"), "$mobilenumber");
+$result = array("$customername", "$gstnumber" ,array( "$address1 ", "$address2", "$district", "$state", "$country","$pincode"), "$mobilenumber","$customercode");
   
 $myJSON = json_encode($result);
 echo $myJSON;

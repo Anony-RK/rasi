@@ -37,7 +37,7 @@ if($del>0)
 						<li class="breadcrumb-item">Billing Master</li>
 					</ol>
 
-					<a href="editbilling">
+					<a href="editbilling5">
 					<button type="button" class="btn btn-primary"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
 					</a>
 
@@ -57,25 +57,52 @@ if($del>0)
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
-					<div class="card-header d-flex justify-content-between mx-4">
-         <div class="container">
-         <div class="row">
-              <div class="col-xl-6 col-md-6 col-sm-6">
+					<!-- <div class="card-header d-flex justify-content-between ">
+                        <div class="container-fluid bg-success">
+                         <div class="row">
+                           <div class="col-xl-6 col-md-6 col-sm-6">
+                              <div class="logo">
+                                <h1 class="colors text-left"> Invoice</h1>
+                              </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                              <img src="./img/logo.png" class="text-right align-items-right" alt="Feathers" style="width:200px;height:50px;">
+                           </div>
+                        </div>
+                      </div>
+                    </div> --> 
+                    <style>
+                    .designs{
+                        height:130px;
+                        background-color:#429bf5;
+                        border-radius:5px 5px 0px 0px;
+                    }
+                    .logos{
+                        margin:30px auto;
+                    }
+                    .invoiceid{
+                        margin:70px;
+                    }
+                    </style>
+                <div class="container  designs">
+                    <div class="row ">
+                           <div class="col-xl-6 col-md-6 col-sm-6">
+                              <div class="logo">
+                                <!-- <h1 class="colors text-left"> Invoice</h1> -->
+                                <img src="./img/logo.png" class="text-right align-items-left logos" alt="Feathers" style="width:200px;height:50px;">
 
-              <div class="logo">
-                      <img src="./img/logo.png" alt="Feathers" style="width:200px;height:50px;">
-                   </div>
-              </div>
-              <div class="col-xl-6 col-md-6 col-sm-6">
-              <h1 class="colors text-right"> Invoice</h1>
-
-              </div>
-          </div>
-
-         </div>
-
-					</div>
-          <hr class="border colors border-5" style="color:#af772a;">
+                              </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6 d-flex text-white">
+                              <div class="address mx-auto">
+                                    <p>12,Rasi Electronics,<br>Vandavasi,thiruvannamalai,<br>600342.</p>
+                                    <p> <b>Contact:</b>0987654321</p> 
+                                    <p> <b>E-Mail:</b>  rasielectronics@gmail.com</p><br> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>  
+          <!-- <hr class="border colors border-5" style="color:#af772a;"> -->
 
                     <div class="card-body">
                               <div class="row">
@@ -86,36 +113,32 @@ if($del>0)
 					  <!-- Row start  -->
 
 
-                      <div class="row">
+                      <!-- <div class="row">
                             <div class="col-xl-2 col-md-2">
                                    
                             
                             </div>
                             <div class="col-xl-4 col-md-3">
-                                    <div class="address">
-                                    <p>12,Rasi Electronics,<br>Vandavasi,thiruvannamalai,<br>600342.</p>
-                                    <p> <b>Contact:</b>0987654321</p> 
-                                    <p> <b>E-Mail:</b>  rasielectronics@gmail.com</p><br> 
-                                    </div>
+                                  
                             </div>
                             <div class="col-xl-2 col-md-3">
                                 
                             </div>
                             <div class="col-xl-4 col-md-4">
-                              <?php  $numbers = mt_rand(5000000, 50000000000);?>
+                              <?php  //$numbers = mt_rand(5000000, 50000000000);?>
                                 <div class="invoiceid d-flex">
                                     <h6><b>Invoice-Id :</b></h6>
                                     <?php //$dates = date("Ymd"); ?>
-                                    <label class="ml-4" value="<?php echo $numbers; ?>" id="billid" name="billid"><?php echo $numbers; ?></label>
+                                    <label class="ml-4" value="<?php //echo $numbers; ?>" id="billid" name="billid"><?php //echo $numbers; ?></label>
                                 </div>
                                 <div class="date d-flex">
                                 <h6><b>Date :</b></h6>
-                                <?php $dates = date("Y-M-d"); ?>
-                                <label class="ml-4" name="date" value="<?php echo $dates ; ?>"><?php echo $dates ; ?></label>
+                                <?php //$dates = date("Y-M-d"); ?>
+                                <label class="ml-4" name="date" value="<?php //echo $dates ; ?>"><?php //echo $dates ; ?></label>
 
-                            </div>
+                            </div>-->
                       
-                      </div>
+                      </div> 
  
       
 <style>
@@ -155,6 +178,7 @@ if($del>0)
                         document.getElementById("customergst").value = myObj[1];
                         document.getElementById("customeraddress").value = myObj[2];
                         document.getElementById("mobilenumber").value = myObj[3];
+                        document.getElementById("customerid").value = myObj[4];
                         document.getElementById("receivername").value = myObj[0];
                         document.getElementById("receiveraddress").value = myObj[2];
                     }
@@ -166,7 +190,7 @@ if($del>0)
         }
 </script>
        
-                                <hr class="border colors border-5" style="color:#af772a;">
+                                <!-- <hr class="border colors border-5" style="color:#af772a;"> -->
 
                        <div class="row">
                          <div class="col-md-6">
@@ -193,7 +217,23 @@ if($del>0)
 
 
                          <div class="col-md-6">
-                         <h5 class="colors border-bottom ml-4 mb-2">Shipping To </h5>
+
+                              <div class="invoiceid ">
+                              
+                              <?php  $numbers = mt_rand(5000000, 50000000000);?>
+                                <div class=" d-flex ">
+                                    <h6><b>Invoice-Id :</b></h6>
+                                    <?php //$dates = date("Ymd"); ?>
+                                    <label class="ml-4" value="<?php echo $numbers; ?>" id="billid" name="billid"><?php echo $numbers; ?></label>
+                                </div>
+                                <div class="date d-flex">
+                                <h6><b>Date :</b></h6>
+                                <?php $dates = date("Y-M-d"); ?>
+                                <label class="ml-4" name="date" value="<?php echo $dates ; ?>"><?php echo $dates ; ?></label><br>            
+                              </div>
+                              <!-- <h6><b>Customer-Id:</b></h6><label id="customerid" name="customercode" ></label> -->
+                            </div>
+                         <!-- <h5 class="colors border-bottom ml-4 mb-2">Shipping To </h5>
                                 <div class="d-flex justify-content-between ml-4">
                                     <b><h6>Customer Name:</h6></b>
                                     <input type="text" class="form-control w-50 text-style" readonly id="receivername" name="customername" >											 																						  
@@ -205,7 +245,7 @@ if($del>0)
                                 <div class="d-flex  justify-content-between ml-4 ">
                                     <b><h6>Contact No :</h6></b>
                                     <input type="text" class="form-control w-50 text-style" readonly id="mobilenumber" name="customeraddress" >  
-                                </div>
+                                </div> -->
                                 <!-- <div class="d-flex justify-content-between ml-4 ">
                                     <b class="d-flex align-items-center"><h6>Ref.No</h6><span class="text-danger ml-1">*</span></b>
                                     <input type="text" class="form-control w-50 text-style" id="referalno" name="referalno" placeholder="Enter Customerid"> 
@@ -245,32 +285,41 @@ if($del>0)
                     </div>
                           <br><br>
                     <div class="row gutters">
+
+                    <style>
+                        .sgstrate {
+                            display:none !important;
+                        }
+                        .cgstrate{
+                            display:none !important;
+                        }
+                    </style>
                         <div class="col-md-12">
                         <table  id="billstable" class="table custom-table table-stritched table-sm">
 										<thead>
-                                        <th>
+                                        <!-- <th>
                                         <th colspan="6"> </th>
                                         <th colspan="2">CGST</th>
                                         <th colspan="2">SGST</th>
-                                        <th></th>
+                                        <th></th> -->
                                         </th>
                                        
-											                   <tr>
-											                        <th > S.No</th>
+									  <tr>
+											  <th > S.No</th>
                                               <th > Description & HSN of Goods</th>
                                               <th > QTY </th>
                                               <th > Rate</th>
                                               <th > Total</th>
                                               <th > Disc.</th>
                                               <th > Taxable Value</th>                                            
-                                              <th > Rate</th>
+                                              <!-- <th > Rate</th>
                                               <th > Amount</th>
                                               <th > Rate</th>
-                                              <th > Amount</th>                                           
+                                              <th > Amount</th>      -->
                                               <th > Total Amount</th>                                         
-										                    	</tr>
-									                	</thead>
-										<tbody>
+									</tr>
+								</thead>
+							<tbody>
                   
                    </tbody>
                   </table>
@@ -278,27 +327,27 @@ if($del>0)
 
 <table  id="igsttable" class="table custom-table table-stritched table-sm">
 										<thead>
-                                        <th>
+                                        <!-- <th>
                                         <th colspan="6"> </th>
                                         <th colspan="2">IGST</th>
                                         
-                                        <th></th>
+                                        <th></th> -->
                                         </th>
                                        
-											                   <tr>
-											                        <th > S.No</th>
+								         <tr>
+											  <th > S.No</th>
                                               <th > Description & HSN of Goods</th>
                                               <th > QTY </th>
                                               <th > Rate</th>
                                               <th > Total</th>
                                               <th > Disc.</th>
                                               <th > Taxable Value</th>                                            
-                                              <th > Rate</th>
-                                              <th > Amount</th>                                                                                        
+                                              <!-- <th > Rate</th>
+                                              <th > Amount</th> --->   
                                               <th > Total Amount</th>                                         
-										                    	</tr>
-									                	</thead>
-										<tbody>
+										 </tr>
+								</thead>
+			        <tbody>
                   
                    </tbody>
                   </table>

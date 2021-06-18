@@ -394,7 +394,69 @@
 		[10, 25, 50, "All"]
 	]
 	});
+
+
+
+
+	// billing4 table
+
+	var billing4_info = $('#billing4_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxbilling4.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
+
+
+
+
+	// billing5 table
+
+	var billing5_info = $('#billing5_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxbilling5.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
 	$('#search').change(function(){
+		billing5_info.draw();
+		billing4_info.draw();
 		billing3_info.draw();
 		billing2_info.draw();
 		billing_info.draw();
@@ -426,7 +488,7 @@
 <?php } if($current_page == 'customer') { ?>
         <script src="js/customer.js"></script>
 <?php } if($current_page == 'taxmaster') { ?>
-			<script src="js/taxmaster.js"></script>
+		<script src="js/taxmaster.js"></script>
 <?php }  if($current_page == 'finance') { ?>
 		<script src="js/finance.js"></script>
 <?php } if($current_page == 'billing') { ?>
@@ -437,4 +499,6 @@
 		<script src="js/billing3.js"></script>
 <?php } if($current_page == 'billing4') { ?>
 		<script src="js/billing4.js"></script>
+<?php } if($current_page == 'billing5') { ?>
+		<script src="js/billing5.js"></script>		
 <?php } ?>
