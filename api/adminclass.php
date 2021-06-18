@@ -3226,7 +3226,7 @@ public function getbillsetting($mysqli,$idupd)
 		$row = $res->fetch_object();	
 		$detailrecords['id']               = $row->id; 
 		$detailrecords['users']       	   = strip_tags($row->users);
-		$detailrecords['billtypes']        = strip_tags($row->billing);
+		$detailrecords['billtypes']        = strip_tags($row->billtypes);
 		$detailrecords['status']           = strip_tags($row->status);		
 
 	}
@@ -3234,7 +3234,18 @@ public function getbillsetting($mysqli,$idupd)
 }
 
 
-
+public function getUsersetting($mysqli)
+{
+	$userselect="SELECT fullname FROM user WHERE status=0";
+	$userresult=$mysqli->query($userselect);
+	$userlist=array();
+	if($userresult->num_rows>0){
+	while($users=$userresult->fetch_assoc()){
+	$userlist[]=$users["fullname"];
+	}
+    }
+    return $userlist;
+}
 
 }
 	

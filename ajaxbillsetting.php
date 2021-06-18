@@ -67,7 +67,29 @@ $data = array();
 foreach ($result as $row) {
     $sub_array   = array();
     $sub_array[] = $row['users'];
-    $sub_array[] = $row['billtypes'];
+    $billtypes = $row['billtypes'];
+    if($billtypes==1)
+    {
+    $billtypes="Billing 1";
+    }
+    if($billtypes==2)
+    {
+    $billtypes="Billing 2";
+    }
+    if($billtypes==3)
+    {
+    $billtypes="Billing 3";
+    }
+    if($billtypes==4)
+    {
+    $billtypes="Billing 4";
+    }
+    if($billtypes==5)
+    {
+    $billtypes="Billing 5";
+    }
+    $sub_array[] = $billtypes;
+
     $status      = $row['status'];
     if($status==1)
 	{

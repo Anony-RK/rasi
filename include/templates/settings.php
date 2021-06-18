@@ -1,6 +1,6 @@
 <?php 
    $id=0;
-
+   $usersettinglist=$userObj->getUsersetting($mysqli);
  if(isset($_POST['submitbillsetting']) )
  {
 	   
@@ -51,7 +51,7 @@ if($idupd>0)
 			$id                 	 = $getbillsetting['id'];
 		
 			$users                      = $getbillsetting['users'];
-			$billingtype                  = $getbillsetting['billtypes']; 
+			$billtypes                  = $getbillsetting['billtypes']; 
             $status                      = $getbillsetting['status'];  
 		}
 	}
@@ -116,15 +116,15 @@ if($idupd>0)
 
     <p><b>Select Users</b><span class="text-danger ml-2">*</span></p>
         <select class="form-control" id="users" name="users" aria-label="Default select example">
-        <option>Open this select menu</option>
-    
-        <?php   
-     $qry = "SELECT user_name FROM user";
-     $result = mysqli_query($mysqli,$qry);
-     while($obj = mysqli_fetch_array($result)){
-    ?>
-            <option id="options"  <?php if(isset($users)) {  if($users ==  $obj['user_name'] ) echo 'selected'; }?>  value="<?php echo $obj['user_name'] ; ?>"> <?php echo $obj['user_name'] ; ?></option>
-            <?php  } ?>
+        <option value="">Select User</option>
+					   <?php
+							if(isset($usersettinglist)){
+								for($i=0;$i<=sizeof($usersettinglist)-1;$i++){
+							?>
+					<option <?php if(isset($users)) { if($users == $usersettinglist[$i] ) echo 'selected'; } ?> 
+						value="<?php if(isset($usersettinglist[$i])){ echo $usersettinglist[$i];} ?>">
+							<?php if(isset($usersettinglist[$i])){ echo $usersettinglist[$i];} ?></option>
+								<?php }} ?>
 
         </select>
 
@@ -156,33 +156,33 @@ if($idupd>0)
 
         <div class="d-flex ">
             <div class="form-check d-flex ">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault1" name="billing"  value="Billing 1"  <?php echo ($billingtype=='Billing 1')?'checked':'' ?>>
+                <input class="form-check-input" type="radio"  id="flexRadioDefault1" name="billing"  value="1" <?php if(isset($billtypes)) { if($billtypes == "1" ) echo 'checked'; }  ?> >
                 <label class="form-check-label ml-2" for="flexRadioDefault1">
                    Billing 1
                 </label>
                 </div>
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault2" name="billing" value="Billing 2"  <?php echo ($billingtype=='Billing 2')?'checked':'' ?>>
+                <input class="form-check-input" type="radio"  id="flexRadioDefault2" name="billing" value="2"  <?php if(isset($billtypes)) { if($billtypes == "2" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault2">
                     Billing 2
                 </label>
                 </div>
 
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault3" name="billing" value="Billing 3"  <?php echo ($billingtype=='Billing 3')?'checked':'' ?>>
+                <input class="form-check-input" type="radio"  id="flexRadioDefault3" name="billing" value="3"  <?php if(isset($billtypes)) { if($billtypes == "3" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault1">
                     Billing 3
                 </label>
                 </div>
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault4" name="billing" value="Billing 4"  <?php echo ($billingtype=='Billing 4')?'checked':'' ?>>
+                <input class="form-check-input" type="radio"  id="flexRadioDefault4" name="billing" value="4"  <?php if(isset($billtypes)) { if($billtypes == "4" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault2">
                      Billing 4
                 </label>
                 </div>
 
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault5" name="billing" value="Billing 5"  <?php if($billingtype=='Billing 5') { ?> checked <?php } ?>>
+                <input class="form-check-input" type="radio"  id="flexRadioDefault5" name="billing" value="5" <?php if(isset($billtypes)) { if($billtypes == "5" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault1">
                    Billing 5
                 </label>
