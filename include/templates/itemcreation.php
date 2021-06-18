@@ -225,8 +225,6 @@ if($idupd>0)
 													<input tabindex="11" type="text" name="type" id="type" class="form-control " placeholder="Enter type" value="<?php if(isset($type )) echo $type ; ?>">
 											</div>
 										</div>
-
-
 										<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 											<div class="form-group">
 												<label class="label">No of gm/pcs</label><span class="text-danger">*</span>

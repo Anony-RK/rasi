@@ -111,7 +111,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 											<p>Admin</p>
 										</div>
 										<a href="#"><i class="icon-user1"></i> My Profile</a>
-										<a href="#"><i class="icon-settings1"></i> Account Settings</a>
+										<a href="include/templates/settings.php"><i class="icon-settings1"></i> Account Settings</a>
 										<a href="index.php"><i class="icon-log-out1"></i> Sign Out</a>
 									</div>
 								</div>
@@ -232,9 +232,17 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
                 <?php   if($current_page == 'finance') { ?>
 				<?php include "include/templates/financecreation.php"?>
                 <?php   } ?>
+
+
+				 <!-- Finance -->
+				 <?php   if($current_page == 'settings') { ?>
+				<?php include "include/templates/settings.php"?>
+                <?php   } ?>
+				<?php   if($current_page == 'editbillsetting') { ?>
+				<?php include "include/templates/editbillsetting.php"?>
+				<?php }?>
 			</div>
 			<!-- Page content end -->
-
 		</div>
 		<!-- Page wrapper end -->
 

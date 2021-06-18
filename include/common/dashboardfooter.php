@@ -454,7 +454,39 @@
 		[10, 25, 50, "All"]
 	]
 	});
+
+
+	
+
+
+	// billsetting table
+
+	var billsetting_info = $('#billsetting_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxbillsetting.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
 	$('#search').change(function(){
+		billsetting_info.draw();
 		billing5_info.draw();
 		billing4_info.draw();
 		billing3_info.draw();
@@ -500,5 +532,7 @@
 <?php } if($current_page == 'billing4') { ?>
 		<script src="js/billing4.js"></script>
 <?php } if($current_page == 'billing5') { ?>
-		<script src="js/billing5.js"></script>		
+		<script src="js/billing5.js"></script>
+		<?php } if($current_page == 'settings') { ?>
+		<script src="js/setting.js"></script>		
 <?php } ?>

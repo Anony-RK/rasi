@@ -3133,7 +3133,109 @@ public function addbilling($mysqli) {
 
 
 }
+
+
+public function addbillsetting($mysqli) {
+
+
+	if (isset($_POST['users'])) {
+		$users  = mysqli_real_escape_string($mysqli,$_POST['users']);		
+		}
+
+		if(isset($_POST['billing'])) {
+			$billing  = mysqli_real_escape_string($mysqli,$_POST['billing']);		 
+
+		}
+     
+
+
+		if(isset($_POST['status']) &&    $_POST['status'] == 'Yes')		
+	{
+		$status=0;
+	}
+	else
+	{
+		$status=1;
+	}
+
+
+      $qry = "INSERT INTO  billsetting (users,billtypes,status) VALUE (
+
+		'".strip_tags($users)."',
+		'".strip_tags($billing)."',
+		'".strip_tags($status)."'
+	  )";
+
+	  $res =$mysqli->query($qry)or die("Error in Query".$mysqli->error);
+	  $id = 0;
+	  $id = $mysqli->insert_id;
+  
+	  return $id; 
+
 }
-// }
+
+public function deletebillsetting($mysqli, $id){
+	$date  = date('Y-m-d'); 
+	$deletestock = "UPDATE billsetting set status='1' WHERE id='".strip_tags($id)."' ";
+	$deletestockres=$mysqli->query($deletestock) or die("Error in delete query".$mysqli->error);
+}
+
+
+
+
+public function updatebillsetting($mysqli,$id){
+  
+	$date  = date('Y-m-d');
+
+	if (isset($_POST['users'])) {
+		$users  = mysqli_real_escape_string($mysqli,$_POST['users']);		
+		}
+
+		if(isset($_POST['billing'])) {
+			$billing  = mysqli_real_escape_string($mysqli,$_POST['billing']);		 
+
+		}
+
+
+		if(isset($_POST['status']) &&    $_POST['status'] == 'Yes')		
+	{
+		$status=0;
+	}
+	else
+	{
+		$status=1;
+	}
+
+
+ $updateQry = 'UPDATE  billsetting  SET 
+ users="'.strip_tags($users).'" ,
+ billtypes="'.strip_tags($billing).'" ,
+ 
+ status="'.$status.'" WHERE id="'.mysqli_real_escape_string($mysqli,$id).'"';  
+
+$res =$mysqli->query($updateQry)or die("Error in in update Query!.".$mysqli->error); 
+}
+
+public function getbillsetting($mysqli,$idupd)
+{
+	$qry = "SELECT * FROM billsetting WHERE id='".mysqli_real_escape_string($mysqli,$idupd)."'"; 
+	$res =$mysqli->query($qry)or die("Error in Get All Records".$mysqli->error);
+	$detailrecords = array();
+	if ($mysqli->affected_rows>0)
+	{
+		$row = $res->fetch_object();	
+		$detailrecords['id']               = $row->id; 
+		$detailrecords['users']       	   = strip_tags($row->users);
+		$detailrecords['billtypes']        = strip_tags($row->billing);
+		$detailrecords['status']           = strip_tags($row->status);		
+
+	}
+	return $detailrecords;
+}
+
+
+
+
+}
 	
 ?>
