@@ -533,6 +533,8 @@
 		<script src="js/billing4.js"></script>
 <?php } if($current_page == 'billing5') { ?>
 		<script src="js/billing5.js"></script>
-		<?php } if($current_page == 'settings') { ?>
-		<script src="js/setting.js"></script>		
+<?php } if($current_page == 'settings') { ?>
+		<script src="js/setting.js"></script>	
+<?php } if($current_page == 'billsetting') { ?>
+		<script src="js/billsetting.js"></script>
 <?php } ?>

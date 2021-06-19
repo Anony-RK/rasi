@@ -72,6 +72,18 @@
 										<li>
 											<a href="billing"><i class="icon-note"></i>Billing</span></a>
 										</li>
+										<li>
+											<a href="billing2"><i class="icon-note"></i>Billing2</span></a>
+										</li>
+										<li>
+											<a href="billing3"><i class="icon-note"></i>Billing3</span></a>
+										</li>
+										<li>
+											<a href="billing4"><i class="icon-note"></i>Billing4</span></a>
+										</li>
+										<li>
+											<a href="billing5"><i class="icon-note"></i>Billing5</span></a>
+										</li>
 									</ul>
 								</div>
 							</li>

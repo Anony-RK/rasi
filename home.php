@@ -235,8 +235,8 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 
 
 				 <!-- Finance -->
-				 <?php   if($current_page == 'settings') { ?>
-				<?php include "include/templates/settings.php"?>
+				 <?php   if($current_page == 'billsetting') { ?>
+				<?php include "include/templates/billsetting.php"?>
                 <?php   } ?>
 				<?php   if($current_page == 'editbillsetting') { ?>
 				<?php include "include/templates/editbillsetting.php"?>
