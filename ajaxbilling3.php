@@ -142,8 +142,8 @@ foreach ($result as $row) {
 	}
 	$id          = $row['id'];
 	
-	$action="<a href='customer&upd=$id' title='Edit details'><span class='icon-border_color'></span></a>&nbsp;&nbsp; 
-	<a href='customer&del=$id' title='Edit details'><span class='icon-trash-2'></span></a>";
+	$action="<a href='editbilling3&upd=$id' title='Edit details'><span class='icon-border_color'></span></a>&nbsp;&nbsp; 
+	<a href='editbilling3&del=$id' title='Edit details'><span class='icon-trash-2'></span></a>";
 
 	
 	$sub_array[] = $action;

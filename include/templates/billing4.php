@@ -37,7 +37,7 @@ if($del>0)
 						<li class="breadcrumb-item">Billing Master</li>
 					</ol>
 
-					<a href="editbilling">
+					<a href="editbilling4">
 					<button type="button" class="btn btn-primary"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
 					</a>
 

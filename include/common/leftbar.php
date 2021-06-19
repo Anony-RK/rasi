@@ -84,6 +84,9 @@
 										<li>
 											<a href="billing5"><i class="icon-note"></i>Billing5</span></a>
 										</li>
+										<li>
+											<a href="billsetting"><i class="icon-note"></i>Bill Setting</span></a>
+										</li>
 									</ul>
 								</div>
 							</li>

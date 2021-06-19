@@ -4,7 +4,7 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">Bill Setting</li>
 					</ol>					
-					<a href="settings">
+					<a href="billsetting">
 					<button type="button"  tabindex="1" id="billsetting" name="billsetting"   class="btn btn-primary"><span class="icon-add"></span>&nbsp Add Bill Types</button>
 					</a>
 				</div>
