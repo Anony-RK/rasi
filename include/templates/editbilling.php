@@ -2,7 +2,7 @@
 				<!-- Page header start -->
 				<div class="page-header">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item">Branch Listing</li>
+						<li class="breadcrumb-item"> Edit Billing</li>
 					</ol>					
 					<a href="billing">
 					<button type="button"  tabindex="1" id="submitbranchbtn" name="submitbranchnew"   class="btn btn-primary"><span class="icon-add"></span>&nbsp Add Bill</button>
