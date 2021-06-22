@@ -87,6 +87,15 @@
 										<li>
 											<a href="billsetting"><i class="icon-note"></i>Bill Setting</span></a>
 										</li>
+										<li>
+											<a href="godowncreation"><i class="icon-note"></i>Godown Creation</span></a>
+										</li>
+										<li>
+											<a href="godownsummary"><i class="icon-note"></i>Godown Summary</span></a>
+										</li>
+										<li>
+											<a href="productionreport"><i class="icon-note"></i>Production Report</span></a>
+										</li>
 									</ul>
 								</div>
 							</li>

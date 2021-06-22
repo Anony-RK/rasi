@@ -89,7 +89,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                               <td><h5>Eastern Region</h5></td> 
+                               <td><h5>Eastern Region</h5></td>
                                <td><input type="text " class="form-control" id="easternregionqty" name="easternregionqty"></td>
                                <td><input type="text " class="form-control" id="easternregionrate" name="easternregionrate"> </td>
                                <td><input type="text " class="form-control" id="easternregionvalue" name="easternregionvalue"></td>
@@ -107,7 +107,7 @@
                                <td><input type="text " class="form-control" id="itemavalue" name="itemavalue"></td>                               
                             </tr>
                             <tr>
-                               <td>Item B</td> 
+                               <td>Item B</td>
                                <td><input type="text " class="form-control" id="itembqty" name="itembqty"></td>
                                <td><input type="text " class="form-control" id="itembrate" name="itembrate"> </td>
                                <td><input type="text " class="form-control" id="itembvalue" name="itembvalue"></td>                             

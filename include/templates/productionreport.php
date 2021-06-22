@@ -70,7 +70,7 @@
                                     <option value="Production">Production</option>
                                     <option value="Purchase">Purchase</option>
                                     <option value="Salres Return">Salres Return</option>
-                                    <option value="Stock Traansfer">Stock Traansfer</option>
+                                    <option value="Stock Traansfer">Stock Transfer</option>
                                  </select>
                             </div>
                             <div class="col-md-6"></div>

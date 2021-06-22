@@ -485,6 +485,36 @@
 		[10, 25, 50, "All"]
 	]
 	});
+
+
+
+	
+	// godowncreation
+
+	var godowncreation_info = $('#godowncreation_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxgodowncreation.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
 	$('#search').change(function(){
 		billsetting_info.draw();
 		billing5_info.draw();
@@ -537,4 +567,8 @@
 		<script src="js/setting.js"></script>	
 <?php } if($current_page == 'billsetting') { ?>
 		<script src="js/billsetting.js"></script>
+<?php } if($current_page == 'godownoutward') { ?>
+		<script src="js/godownoutward.js"></script>
+<?php } if($current_page == 'branchoutward') { ?>
+		<script src="js/branchoutward.js"></script>
 <?php } ?>

@@ -250,6 +250,40 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 				 <?php   if($current_page == 'purchaseorderbill') { ?>
 				<?php include "include/templates/purchaseorderbill.php"?>
                 <?php   } ?>
+
+
+				<!-- godown -->
+				<?php   if($current_page == 'godowncreation') { ?>
+				<?php include "include/templates/godowncreation.php"?>
+                <?php   } ?>
+				<?php   if($current_page == 'editgodowncreation') { ?>
+				<?php include "include/templates/editgodowncreation.php"?>
+                <?php   } ?>
+				
+
+
+					<!-- godown -->
+					<?php   if($current_page == 'godownsummary') { ?>
+				<?php include "include/templates/godownsummary.php"?>
+                <?php   } ?>
+
+
+				<!-- productionreport-->
+				<?php   if($current_page == 'productionreport') { ?>
+				<?php include "include/templates/productionreport.php"?>
+                <?php   } ?>
+
+					<!-- branchoutward-->
+					<?php   if($current_page == 'branchoutward') { ?>
+				<?php include "include/templates/branchoutward.php"?>
+                <?php   } ?>
+
+					<!-- godownoutward-->
+					<?php   if($current_page == 'godownoutward') { ?>
+				<?php include "include/templates/godownoutward.php"?>
+                <?php   } ?>
+
+
 				
 			</div>
 			<!-- Page content end -->

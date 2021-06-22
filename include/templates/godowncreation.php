@@ -1,36 +1,67 @@
-
 <?php 
-$subgrouplist=$userObj->getSubgroup($mysqli);
-$id=0;
- if(isset($_POST['submitbill']))
+   $id=0;
+
+ if(isset($_POST['submitgodown']))
  {
-  if(isset($_POST['others']) &&  isset($_POST['others']) == true) {
-		$addbilling = $userObj->addbilling($mysqli);   
-  ?>
-      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
+	   
+
+    if(isset($_POST['id']) && $_POST['id'] >0 && is_numeric($_POST['id'])){		
+        $id = $_POST['id']; 	
+    $updategodowncreation = $userObj->updategodowncreation($mysqli,$id);  
+    ?>
+   <script>location.href='<?php echo $HOSTPATH;  ?>editgodowncreation&msc=2';</script>
+    <?php	}
+    else{   
+	
+		$addgodowncreation = $userObj->addgodowncreation($mysqli);   
+        ?>
+    <script>location.href='<?php echo $HOSTPATH;  ?>editgodowncreation&msc=1';</script>
         <?php
-}
-//  else
- if(isset($_POST['tamilnadu']) &&  isset($_POST['tamilnadu']) == true )
-{
-  $addcgst = $userObj->addcgst($mysqli);   
-  ?>
-      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
-        <?php
-}
-}
+    }
+ }  
+ 
 
 $del=0;
+$costcenter=0;
 if(isset($_GET['del']))
 {
 $del=$_GET['del'];
 }
 if($del>0)
 {
-	$deletebilliing = $userObj->deletebilliing($mysqli,$del); 
+	$deletegodowncreation = $userObj->deletegodowncreation($mysqli,$del); 
+	//die;
 	?>
-	<script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=3';</script>
-<?php	} ?>
+	<script>location.href='<?php echo $HOSTPATH;  ?>editgodowncreation&msc=3';</script>
+<?php	
+}
+
+if(isset($_GET['upd']))
+{
+$idupd=$_GET['upd'];
+}
+$status =0;
+if($idupd>0)
+{
+	$getgodowncreation = $userObj->getgodowncreation($mysqli,$idupd); 
+	
+	if (sizeof($getgodowncreation)>0) {
+        for($igodown=0;$igodown<sizeof($getgodowncreation);$igodown++)  {			
+			$id                       	 = $getgodowncreation['id'];
+			$godownname          		     = $getgodowncreation['godownname'];
+			$alias      			           = $getgodowncreation['alias'];
+			$address      		        	 = $getgodowncreation['address'];
+			$under       			           = $getgodowncreation['under'];
+			$allowstock                	 = $getgodowncreation['allowstock'];
+			$stockwith                	 = $getgodowncreation['stockwith'];
+			$thiredpartystock            = $getgodowncreation['thiredpartystock'];		
+      $status                      = $getgodowncreation['status'];  
+		}
+	}
+}
+
+  ?>
+  
 
 <!-- Page header start -->
 <div class="page-header">
@@ -69,24 +100,30 @@ if($del>0)
                       
                         <div class="d-flex justify-content-between ">
                         <h6>Godown Name:</h6>
-                        <input type="text" class="form-control w-75" id="godownname" name="godownname">
+                        <select type="text" class="form-control w-75" id="godownname" name="godownname" >
+                              <option value="">Select Godown</option>
+                              <option <?php if(isset($godownname)) { if($godownname == "Godown A" ) echo 'selected'; }  ?> value="Godown A">Godown A</option>
+                              <option <?php if(isset($godownname)) { if($godownname == "Godown B" ) echo 'selected'; }  ?> value="Godown B">Godown B</option>
+                              <option <?php if(isset($godownname)) { if($godownname == "Godown C" ) echo 'selected'; }  ?> value="Godown C">Godown C</option>
+                              <option <?php if(isset($godownname)) { if($godownname == "Godown D" ) echo 'selected'; }  ?> value="Godown D">Godown D</option>
+                        </select>
                         </div><br>
 
                         <div class="d-flex justify-content-between ">
                         <h6>(Alias):</h6>
-                        <input type="text" class="form-control w-75" id="godownname" name="godownname">
+                        <input type="text" class="form-control w-75" value="<?php if(isset($alias )) echo $alias ; ?>" id="alias" name="alias">
                         </div><br><br>
 
 
                         <div class="d-flex justify-content-between ">
                         <h6>Address:</h6>
-                        <textarea type="text" class="form-control w-75" id="godownname" name="godownname"></textarea>
+                        <input type="text" class="form-control w-75" value="<?php if(isset($address )) echo $address ; ?>" id="address" name="address">
                         </div>
                       
 
                         <div class="d-flex justify-content-between mt-4">
                         <h6>Under:</h6>
-                        <input type="text" class="form-control w-75" id="godownname" name="godownname">
+                        <input type="text" class="form-control w-75" value="<?php if(isset($under )) echo $under ; ?>" id="under" name="under">
                         </div><br><br>
                       </div>
                       <div class="col-md-6"></div>
@@ -99,26 +136,29 @@ if($del>0)
 
                        <div class="d-flex justify-content-between">
                        <p>Allow Storage of materials   ?</p>
-                       <select name="" id="" class="form-control w-50">
-                          <option value="Yes">Yes</option>
-                          <option value="No">No</option>
+                       <select  class="form-control w-50" id="allowstock" name="allowstock">
+                       <option value=""> select option</option>
+                          <option <?php if(isset($allowstock)) { if($allowstock == "Yes" ) echo 'selected'; }  ?> value="Yes">Yes</option>
+                          <option <?php if(isset($allowstock)) { if($allowstock == "No" ) echo 'selected'; }  ?> value="No">No</option>
                        </select>        
                        </div>
 
                          <h5 class="border-bottom mt-4">Use For</h5>
                       <div class="d-flex justify-content-between">
                        <p>Our Stock With Thired Party  ?</p>
-                       <select name="" id="" class="form-control  w-50">
-                          <option value="Yes">Yes</option>
-                          <option value="No">No</option>
+                       <select  class="form-control  w-50" id="stockwith" name="stockwith">
+                       <option value=""> select option</option>
+                          <option <?php if(isset($stockwith)) { if($stockwith == "Yes" ) echo 'selected'; }  ?> value="Yes">Yes</option>
+                          <option <?php if(isset($stockwith)) { if($stockwith == "No" ) echo 'selected'; }  ?> value="No">No</option>
                        </select>        
                        </div>
 
                        <div class="d-flex justify-content-between mt-1">
                        <p>Thired Party Stock with Us  ?</p>
-                       <select name="" id="" class="form-control w-50">
-                          <option value="Yes">Yes</option>
-                          <option value="No">No</option>
+                       <select  class="form-control w-50 " id="thiredpartystock" name="thiredpartystock">
+                       <option value=""> select option</option>
+                          <option <?php if(isset($thiredpartystock)) { if($thiredpartystock == "Yes" ) echo 'selected'; }  ?> value="Yes">Yes</option>
+                          <option <?php if(isset($thiredpartystock)) { if($thiredpartystock == "No" ) echo 'selected'; }  ?> value="No">No</option>
                        </select>        
                        </div>
 
@@ -129,7 +169,7 @@ if($del>0)
 		
                    <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
                        <div class="custom-control custom-checkbox mt-4">
-                       <input type="checkbox" value="Yes"  <?php  //if($status==0) { echo 'checked'; //} ?> tabindex="25"  class="custom-control-input" id="status" name="status">
+                       <input type="checkbox" value="Yes"  <?php  if($status==0) { echo 'checked'; } ?> tabindex="25"  class="custom-control-input" id="status" name="status">
 						           <label class="custom-control-label" for="status">Status</label>
 					      	</div><br /><br /> 
                </div>
@@ -141,7 +181,7 @@ if($del>0)
 					   </div>
             <div class="col-md-6"></div>                          
               <div class="col-md-2 ">						
-							    <button type="submit" name="submitbill" id="submitbill" class="btn btn-primary"  tabindex="73">Submit</button>
+							    <button type="submit" name="submitgodown" id="submitgodown" class="btn btn-primary"  tabindex="73">Submit</button>
                   <button type="button" class="btn btn-outline-secondary" tabindex="74">Cancel</button>
 					    </div>
             </div>

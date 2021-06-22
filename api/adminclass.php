@@ -3247,6 +3247,157 @@ public function getUsersetting($mysqli)
     return $userlist;
 }
 
+
+
+
+// Godown Creation
+
+public function addgodowncreation($mysqli) {
+	$thiredpartystock = $stockwith = $allowstock =  '';
+
+	// $thiredpartystock = $stockwith = $allowstock = ;
+	
+	if (isset($_POST['godownname'])) {
+		$godownname  = mysqli_real_escape_string($mysqli,$_POST['godownname']);		
+		}
+    if(isset($_POST['alias'])) {
+	    $alias  = mysqli_real_escape_string($mysqli,$_POST['alias']);
+		}
+    if (isset($_POST['address'])) {
+		$address  = mysqli_real_escape_string($mysqli,$_POST['address']);		
+		}
+    if(isset($_POST['under'])) {
+	    $under  = mysqli_real_escape_string($mysqli,$_POST['under']);
+		} 
+	
+	if(isset($_POST['allowstock'])) {
+		$allowstock  = mysqli_real_escape_string($mysqli,$_POST['allowstock']);
+		}
+	if (isset($_POST['stockwith'])) {
+		$stockwith  = mysqli_real_escape_string($mysqli,$_POST['stockwith']);		
+			}
+		if(isset($_POST['thiredpartystock'])) {
+			$thiredpartystock  = mysqli_real_escape_string($mysqli,$_POST['thiredpartystock']);
+			}
+		if(isset($_POST['status']) &&    $_POST['status'] == 'Yes')		
+	{
+		$status=0;
+	}
+	else
+	{
+		$status=1;
+	}
+
+
+      $qry = "INSERT INTO  godowncreation (
+		  godownname,alias,address,under,
+		  allowstock,stockwith,thiredpartystock,status) 
+		  
+		  VALUE (
+
+		'$godownname',
+		'$alias',
+		'$address',
+		'$under',
+		'$allowstock',
+		'$stockwith',
+		'$thiredpartystock',
+		'$status'
+	  )";
+
+	  $res =$mysqli->query($qry)or die("Error in Query".$mysqli->error);
+	  $id = 0;
+	  $id = $mysqli->insert_id;
+  
+	  return $id; 
+
+}
+
+public function updategodowncreation($mysqli,$id) {
+	$thiredpartystock = $stockwith =  '';
+
+	$date  = date('Y-m-d');
+	
+	if (isset($_POST['godownname'])) {
+		$godownname  = mysqli_real_escape_string($mysqli,$_POST['godownname']);		
+		}
+    if(isset($_POST['alias'])) {
+	    $alias  = mysqli_real_escape_string($mysqli,$_POST['alias']);
+		}
+    if (isset($_POST['address'])) {
+		$address  = mysqli_real_escape_string($mysqli,$_POST['address']);		
+		}
+    if(isset($_POST['under'])) {
+	    $under  = mysqli_real_escape_string($mysqli,$_POST['under']);
+		} 
+	if (isset($_POST['users'])) {
+		$users  = mysqli_real_escape_string($mysqli,$_POST['users']);		
+		}
+	if(isset($_POST['allowstock'])) {
+		$allowstock  = mysqli_real_escape_string($mysqli,$_POST['allowstock']);
+		}
+	if (isset($_POST['stockwith'])) {
+		$stockwith  = mysqli_real_escape_string($mysqli,$_POST['stockwith']);		
+			}
+		if(isset($_POST['thiredpartystock'])) {
+			$thiredpartystock  = mysqli_real_escape_string($mysqli,$_POST['thiredpartystock']);
+			}
+		if(isset($_POST['status']) &&    $_POST['status'] == 'Yes')		
+	{
+		$status=0;
+	}
+	else
+	{
+		$status=1;
+	}
+
+
+ $updateQry = 'UPDATE  godowncreation  SET 
+ godownname="'.strip_tags($godownname).'" ,
+ alias="'.strip_tags($alias).'" ,
+ address="'.strip_tags($address).'" ,
+ under="'.strip_tags($under).'" ,
+ allowstock="'.strip_tags($allowstock).'" ,
+ stockwith="'.strip_tags($stockwith).'" ,
+ thiredpartystock="'.strip_tags($thiredpartystock).'" ,
+ status="'.$status.'" WHERE id="'.mysqli_real_escape_string($mysqli,$id).'"';  
+
+$res =$mysqli->query($updateQry)or die("Error in in update Query!.".$mysqli->error); 
+
+}
+
+
+
+public function deletegodowncreation($mysqli, $id){
+	$date  = date('Y-m-d'); 
+	$deletestock = "UPDATE godowncreation set status='1' WHERE id='".strip_tags($id)."' ";
+	$deletestockres=$mysqli->query($deletestock) or die("Error in delete query".$mysqli->error);
+}
+
+
+
+public function getgodowncreation($mysqli,$idupd)
+{
+	$qry = "SELECT * FROM godowncreation WHERE id='".mysqli_real_escape_string($mysqli,$idupd)."'"; 
+	$res =$mysqli->query($qry)or die("Error in Get All Records".$mysqli->error);
+	$detailrecords = array();
+	if ($mysqli->affected_rows>0)
+	{
+		$row = $res->fetch_object();	
+		$detailrecords['id']               = $row->id; 
+		$detailrecords['godownname']       	   = strip_tags($row->godownname);
+		$detailrecords['alias']        = strip_tags($row->alias);
+		$detailrecords['address']        = strip_tags($row->address);
+		$detailrecords['under']        = strip_tags($row->under);
+		$detailrecords['allowstock']        = strip_tags($row->allowstock);
+		$detailrecords['stockwith']        = strip_tags($row->stockwith);
+		$detailrecords['thiredpartystock']        = strip_tags($row->thiredpartystock);
+		$detailrecords['status']           = strip_tags($row->status);		
+
+	}
+	return $detailrecords;
+}
+
 }
 	
 ?>
