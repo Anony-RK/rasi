@@ -241,6 +241,16 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 				<?php   if($current_page == 'editbillsetting') { ?>
 				<?php include "include/templates/editbillsetting.php"?>
 				<?php }?>
+
+
+
+
+				
+				 <!-- purchase order Bill -->
+				 <?php   if($current_page == 'purchaseorderbill') { ?>
+				<?php include "include/templates/purchaseorderbill.php"?>
+                <?php   } ?>
+				
 			</div>
 			<!-- Page content end -->
 		</div>
