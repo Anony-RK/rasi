@@ -242,19 +242,43 @@ if($idupd>0)
 </style>
 
 <script>
-
+//   function button1() {
+//     var pono = $(this).val();
+//     // var grnno=$("#grnno").val();
+//     if(pono==''){
+//       $("#showmodel1").hide();
+//       return false;
+//     }
+//     else
+//     {
+//     $.ajax({
+//     url: "ajaxviewbilling.php",
+//     data:{"pono":pono},
+//     cache: false,
+//     type: "post",
+//    success: function (html) {
+//     $("#showmodel1").html(html);
+//    }
+//    });
+//   }
+// }
 </script>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div>
-                  <input type="submit" class="bg-primary borders"   id="viewmodel1" class="viewmodel1" value="View Model 1">
+                  <button type="button" class="bg-primary borders"  id="viewmodel1"  value="View Model 1">View Model 1</button>
                   <div id="showmodel1" class="mt-4"> 
                   
 
+
+
 <!-- Page header start -->
 <div class="page-header">
-				
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">Billing Master</li>
+					</ol>
+
 					<a href="editbilling">
 					<button type="button" class="btn btn-primary hiddenarea"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
 					</a>
@@ -294,38 +318,43 @@ if($idupd>0)
 
                                 <script>
 
-function companydetails(str) {
-    if (str.length == 0) {
-        // document.getElementById("companygst").value = "";        
-        document.getElementById("companyaddress").value = "";
-        document.getElementById("companyphone").value = "";
-        document.getElementById("companyemail").value = "";
-        return;
-    }
-    else {
+// function companydetails(str) {
+//     if (str.length == 0) {
+//         // document.getElementById("companygst").value = "";        
+//         document.getElementById("companyaddress").value = "";
+//         document.getElementById("companyphone").value = "";
+//         document.getElementById("companyemail").value = "";
+//         return;
+//     }
+//     else {
 
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
+//         var xmlhttp = new XMLHttpRequest();
+//         xmlhttp.onreadystatechange = function () {
 
-            if (this.readyState == 4 && 
-                    this.status == 200) {
-                var myObj = JSON.parse(this.responseText);
+//             if (this.readyState == 4 && 
+//                     this.status == 200) {
+//                 var myObj = JSON.parse(this.responseText);
 
-                // document.getElementById("companygst").value = myObj[0];
-                document.getElementById("companyaddress").value = myObj[0];
-                document.getElementById("companyphone").value = myObj[1];
-                document.getElementById("companyemail").value = myObj[2];
+//                 // document.getElementById("companygst").value = myObj[0];
+//                 document.getElementById("companyaddress").value = myObj[0];
+//                 document.getElementById("companyphone").value = myObj[1];
+//                 document.getElementById("companyemail").value = myObj[2];
 
                 
-            }
-        };
+//             }
+//         };
 
-        xmlhttp.open("GET", "companydetails.php?companygst=" + str, true);
-        xmlhttp.send();
-    }
-}
+//         xmlhttp.open("GET", "companydetails.php?companygst=" + str, true);
+//         xmlhttp.send();
+//     }
+// }
 </script>
-   
+                                <?php
+        //  include "api/iedit-config.php";  // Using database connection file here
+        // $records = mysqli_query($mysqli, "SELECT companyname,gst,address,email,pincode, state,phonenumber From company WHERE companyname='comp1' ");  // Use select query here 
+
+        // while($data = mysqli_fetch_array($records))
+        // {?>
       <style>
       .text-style{
     border:none !important;
@@ -387,38 +416,38 @@ function companydetails(str) {
 
 <script>
 
-        function GetDetail(str) {
-            if (str.length == 0) {
-                document.getElementById("customername").value = "";        
-                document.getElementById("customeraddress").value = "";
-                document.getElementById("customergst").value = "";
-                document.getElementById("mobilenumber").value = "";
-                return;
-            }
-            else {
+        // function GetDetail(str) {
+        //     if (str.length == 0) {
+        //         document.getElementById("customername").value = "";        
+        //         document.getElementById("customeraddress").value = "";
+        //         document.getElementById("customergst").value = "";
+        //         document.getElementById("mobilenumber").value = "";
+        //         return;
+        //     }
+        //     else {
   
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function () {
+        //         var xmlhttp = new XMLHttpRequest();
+        //         xmlhttp.onreadystatechange = function () {
   
-                    if (this.readyState == 4 && 
-                            this.status == 200) {
-                        var myObj = JSON.parse(this.responseText);
+        //             if (this.readyState == 4 && 
+        //                     this.status == 200) {
+        //                 var myObj = JSON.parse(this.responseText);
   
-                        document.getElementById("customername").value = myObj[0];
-                        document.getElementById("customergst").value = myObj[1];
-                        document.getElementById("customeraddress").value = myObj[2];
-                        document.getElementById("mobilenumber").value = myObj[3];
+        //                 document.getElementById("customername").value = myObj[0];
+        //                 document.getElementById("customergst").value = myObj[1];
+        //                 document.getElementById("customeraddress").value = myObj[2];
+        //                 document.getElementById("mobilenumber").value = myObj[3];
 
-                        document.getElementById("receivername").value = myObj[0];
-                        document.getElementById("receivergst").value = myObj[1];
-                        document.getElementById("receiveraddress").value = myObj[2];
-                    }
-                };
+        //                 document.getElementById("receivername").value = myObj[0];
+        //                 document.getElementById("receivergst").value = myObj[1];
+        //                 document.getElementById("receiveraddress").value = myObj[2];
+        //             }
+        //         };
   
-                xmlhttp.open("GET", "customersbill.php?customercode=" + str, true);
-                xmlhttp.send();
-            }
-        }
+        //         xmlhttp.open("GET", "customersbill.php?customercode=" + str, true);
+        //         xmlhttp.send();
+        //     }
+        // }
 </script>
 
                                    <tr>
@@ -512,7 +541,14 @@ function companydetails(str) {
                     <div class="selectstate d-flex align-items-center">
                         <p><b>Delivery State  ?</b></p>
                         <div class="checks ml-4 d-flex">
-                       
+                         <!--  <div class="state d-flex">
+                              <input type="radio" >
+                              <label for="" id="tamilnadu" class="ml-2">TamilNadu</label>
+                          </div>
+                          <div class="state d-flex ml-4">
+                              <input type="radio" >
+                              <label for="" id="others" class="ml-2">Others</label>
+                          </div> -->
 
 <div class="form-check align-items-center d-flex ">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="tamilnadu" checked>
@@ -527,7 +563,14 @@ function companydetails(str) {
   </label>
 </div>
                         
-                      
+                       <!-- <div class="form-check align-items-center d-flex">
+                          <input class="form-check-input" type="radio" name="tamilnadu" id="tamilnadu" checked>
+                          <label class="form-check-label ml-2" for="flexRadioDefault1"> Tamilnadu</label> 
+                        </div>
+                        <div class="form-check align-items-center d-flex">
+                          <input class="form-check-input" type="radio" name="others" id="others">
+                          <label class="form-check-label ml-2" for="flexRadioDefault2"> Others </label>
+                        </div> -->
                         </div>
                     </div>
                           <br><br>
@@ -608,7 +651,18 @@ function companydetails(str) {
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="totaldiscount" name="totaldiscount">
                         </div>
                       </div>
-                  
+                      <!-- <div class="total d-flex justify-content-between hidestate" id="hidestate">
+                        <p>Total CGST</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalcgst" name="totalcgst">
+                        </div>
+                      </div> -->
+                      <!-- <div class="total d-flex justify-content-between hidestate" id="hidestate">
+                        <p>Total SGST</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalsgst" name="totalsgst">
+                        </div>
+                      </div> -->
                       
                       
                       <div class="total d-flex justify-content-between" id="alltotal">
@@ -753,15 +807,21 @@ function companydetails(str) {
 
 
 
-               
+
                   </div>
             </div>
             <div class="model2" >
-                 <input  type="submit" class="bg-primary borders" id="viewmodel2" value="View Model 2"> 
+                 <button  type="button" class="bg-primary borders" id="viewmodel2" value="View Model 2">View Model 2 </button>
                  <div id="showmodel2" class="mt-4">
-                    <!-- Page header start -->
+
+                 
+
+
+<!-- Page header start -->
 <div class="page-header">
-					
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">Billing Master</li>
+					</ol>
 
 					<a href="editbilling">
 					<button type="button" class="btn btn-primary hiddenarea"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
@@ -950,11 +1010,105 @@ function companydetails(str) {
         }
 </script>
 
-                
+                                   <!-- <tr>
+                                      <td>Purchaser Name</td>
+                                      <td><input type="text" class="form-control" id="customername" name="customername" ></td>											 																						  
+                                    </tr>
+                                    <tr>
+                                      <td>GSTIN</td>
+                                      <td><input type="text" class="form-control" id="customergst" name="customergst" ></td>  
+                                    </tr>
+                                    <tr>
+                                      <td>Address</td>
+                                      <td><input type="text" class="form-control" id="customeraddress" name="customeraddress" ></td>  
+                                    </tr>
+                                    <tr>
+                                      <td>Ref.No <span class="text-danger">*</span></td>
+                                      <td><input type="text" class="form-control" onkeyup="GetDetail(this.value)" id="referalno" name="referalno" placeholder="Enter Customerid"></td>  
+                                    </tr>
+              <?php //}?>
+										  
+										</tbody>
+						    	</table> -->
+                       <!-- </div>
+                       <div class="col-md-4"> -->
+                       <!-- <table  class="table custom-table">
+										<thead>
+											<tr>
+											  <th colspan="4">Shipping Details</th>
+											 
+											  
+											</tr>
+										</thead>
+										<tbody>
+  
+										   <tr>
+											  <td>Receiver Name</td>
+											  <td><input type="text" class="form-control" id="receivername" name="receivername" ></td>											 																						  
+											</tr>
+                                            <tr>
+											  <td>GSTIN</td>
+											  <td><input type="text" class="form-control" id="receivergst" name="receivergst"  ></td>  
+											</tr>
+                                            <tr>
+											  <td>Delivery Address</td>
+											  <td><input type="text" class="form-control" id="receiveraddress" name="receiveraddress"></td>  
+											</tr>
+                                            <tr>
+											  <td>Contact No</td>
+											  <td><input type="text" class="form-control" id="mobilenumber" name="receivercontact"></td>  
+											</tr>
+                      <?php  //}?>
+                     
+										</tbody>
+						    	</table> -->
+                       <!-- </div>
+                       <div class="col-md-4"> -->
+                       <!-- <table  class="table custom-table">
+										<thead>
+											<tr>
+											  <th colspan="4">Transport Details</th>
+											 
+											  
+											</tr>
+										</thead>
+										<tbody>
+										   <tr>
+											  <td>Transporter's Name</td>
+											  <td><input type="text" class="form-control" name="transportername"  ></td>											 																						  
+											</tr>
+                                            <tr>
+											  <td>GSTIN</td>
+											  <td><input type="text" class="form-control" name="transportergst" ></td>  
+											</tr>
+                                            <tr>
+											  <td>Address</td>
+											  <td><input type="text" class="form-control" name="transporteraddress" ></td>  
+											</tr>
+                                            <tr>
+											  <td>E-Way Bill no</td>
+											  <td><input type="text" class="form-control" name="transporteremail" ></td>  
+											</tr>
+                                            <tr>
+											  <td>Vehicle no</td>
+											  <td><input type="text" class="form-control" name="vehiclenumber" ></td>  
+											</tr>
+										</tbody>
+						    	</table> -->
+                       <!-- </div> -->
+
+                    <!-- </div> -->
                     <div class="selectstate d-flex align-items-center mt-4">
                         <p><b>Delivery State  ?</b></p>
                         <div class="checks ml-4 d-flex">
-                        
+                         <!--  <div class="state d-flex">
+                              <input type="radio" >
+                              <label for="" id="tamilnadu" class="ml-2">TamilNadu</label>
+                          </div>
+                          <div class="state d-flex ml-4">
+                              <input type="radio" >
+                              <label for="" id="others" class="ml-2">Others</label>
+                          </div> -->
 <div class="form-check align-items-center d-flex">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="tamilnadu" checked>
   <label class="form-check-label ml-2" for="flexRadioDefault1">
@@ -969,6 +1123,18 @@ function companydetails(str) {
 </div>
 
 
+
+
+
+
+                       <!-- <div class="form-check align-items-center d-flex">
+                          <input class="form-check-input" type="radio" name="tamilnadu" id="tamilnadu" checked>
+                          <label class="form-check-label ml-2" for="flexRadioDefault1"> Tamilnadu</label> 
+                        </div>
+                        <div class="form-check align-items-center d-flex">
+                          <input class="form-check-input" type="radio" name="others" id="others">
+                          <label class="form-check-label ml-2" for="flexRadioDefault2"> Others </label>
+                        </div> -->
                         </div>
                     </div>
                           <br><br>
@@ -1049,7 +1215,18 @@ function companydetails(str) {
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="totaldiscount" name="totaldiscount">
                         </div>
                       </div>
-                     
+                      <!-- <div class="total d-flex justify-content-between hidestate" id="hidestate">
+                        <p>Total CGST</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalcgst" name="totalcgst">
+                        </div>
+                      </div>
+                      <div class="total d-flex justify-content-between hidestate" id="hidestate">
+                        <p>Total SGST</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalsgst" name="totalsgst">
+                        </div>
+                      </div> -->
                       
                       
                       <div class="total d-flex justify-content-between" id="alltotal">
@@ -1089,6 +1266,13 @@ function companydetails(str) {
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="igsttotaldiscount" name="igsttotaldiscount">
                         </div>
                       </div>
+                      <!-- <div class="total d-flex justify-content-between hideothers" id="hideothers">
+                        <p>IGST</p>
+                        <div class="input-group mb-3 w-50">
+                        <input type="text" class="form-control w-50 " placeholder="0" readonly id="igsttotaligst" name="igsttotaligst">
+                          <span class="input-group-text" id="basic-addon2">.Rs</span>
+                        </div>
+                      </div> -->
                       
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Other Charges</p>
@@ -1187,17 +1371,22 @@ function companydetails(str) {
             </div>
         </div>
     </div>
-</div>
+<!-- </div>
 </form>
-</div>
+</div> -->
                  </div>
             </div>
             <div class="model3" >
-                 <input  type="submit" class="bg-primary borders" id="viewmodel3" value="View Model 3"> 
+                 <button  type="button" class="bg-primary borders" id="viewmodel3" value="View Model 3">View Model 3 </button>
                  <div id="showmodel3" class="mt-4">
-                 <!-- Page header start -->
+
+                 
+
+<!-- Page header start -->
 <div class="page-header">
-					
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">Billing Master</li>
+					</ol>
 
 					<a href="editbilling">
 					<button type="button" class="btn btn-primary hiddenarea"><span class="icon-border_color "></span>&nbsp Edit Billing</button>
@@ -1628,18 +1817,23 @@ function companydetails(str) {
                 </div>
             </div>
         </div>
-    <!-- </div>
+    </div>
 </div>
 </form>
-</div>   -->
+</div>
                  </div>
             </div>
             <div class="model4"  >
-                 <input  type="submit" class="bg-primary borders" id="viewmodel4" value="View Model 4"> 
+                 <button  type="button" class="bg-primary borders" id="viewmodel4" value="View Model 4">View Model 4</button> 
                  <div id="showmodel4" class="mt-4">
-                 <!-- Page header start -->
-                <div class="page-header">
-					
+                 
+
+
+<!-- Page header start -->
+<div class="page-header">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">Billing Master</li>
+					</ol>
 
 					<a href="editbilling">
 					<button type="button" class="btn btn-primary hiddenarea"><span class="icon-border_color "></span>&nbsp Edit Billing</button>
@@ -2083,19 +2277,21 @@ function companydetails(str) {
                 </div>
             </div>
         </div>
-     </div>
+    </div>
 </div>
 </form>
-</div> 
+</div>
                  </div>
             </div>
             <div class="model5" >
-                 <input  type="submit" class="bg-primary borders" id="viewmodel5" value="View Model 5"> 
+                 <button  type="button" class="bg-primary borders" id="viewmodel5" value="View Model 5">View Model 5</button> 
                  <div id="showmodel5" class="mt-4">
-
-                 <!-- Page header start -->
+                 
+<!-- Page header start -->
 <div class="page-header">
-					
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">Billing Master</li>
+					</ol>
 
 					<a href="editbilling">
 					<button type="button" class="btn btn-primary hiddenarea"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
@@ -2589,10 +2785,9 @@ function companydetails(str) {
             </div>
         </div>
     </div>
-</div>
+<!-- </div>
 </form>
-</div>
-
+</div> -->
                  </div>
             </div>
 

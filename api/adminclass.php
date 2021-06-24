@@ -3724,13 +3724,13 @@ public function updateusercreation($mysqli,$id) {
 	lastname="'.strip_tags($lastname).'" ,
 	fullname="'.strip_tags($fullname).'" ,	
 	title="'.strip_tags($title).'" ,
-	emailpassword="'.strip_tags($emailpassword).'" ,
+	email="'.strip_tags($email).'" ,
 	password="'.strip_tags($password).'" ,
 	companyname="'.strip_tags($companyname).'" ,
 	administration="'.strip_tags($administration).'" ,
 	master="'.strip_tags($master).'" ,
 	profitallocation="'.strip_tags($profitallocation).'" ,
-	allowstock="'.strip_tags($purchaseorder).'" ,
+	purchaseorder="'.strip_tags($purchaseorder).'" ,
 	grn="'.strip_tags($grn).'" ,
 	mhepurchaseorder="'.strip_tags($mhepurchaseorder).'" ,
 	mhegrn="'.strip_tags($mhegrn).'" ,
@@ -3754,6 +3754,66 @@ public function deleteusercreation($mysqli, $id){
 	$deletestock = "UPDATE usercreation set status='1' WHERE id='".strip_tags($id)."' ";
 	$deletestockres=$mysqli->query($deletestock) or die("Error in delete query".$mysqli->error);
 }
+
+
+
+
+
+public function getusercreation($mysqli,$idupd)
+{
+	$qry = "SELECT * FROM usercreation WHERE id='".mysqli_real_escape_string($mysqli,$idupd)."'"; 
+	$res =$mysqli->query($qry)or die("Error in Get All Records".$mysqli->error);
+	$detailrecords = array();
+
+
+	if ($mysqli->affected_rows>0)
+	{
+		$row = $res->fetch_object();	
+		$detailrecords['id']               = $row->id; 
+		$detailrecords['role']       	   = strip_tags($row->role);
+		$detailrecords['firstname']        = strip_tags($row->firstname);
+		$detailrecords['lastname']       	   = strip_tags($row->lastname);
+		$detailrecords['fullname']        = strip_tags($row->fullname);
+		$detailrecords['title']       	   = strip_tags($row->title);
+		$detailrecords['email']        = strip_tags($row->email);
+		$detailrecords['password']       	   = strip_tags($row->password);
+		$detailrecords['companyname']        = strip_tags($row->companyname);
+
+		$detailrecords['administration']       	   = strip_tags($row->administration);
+
+		$detailrecords['master']        = strip_tags($row->master);
+
+		$detailrecords['profitallocation']       	   = strip_tags($row->profitallocation);
+		
+		$detailrecords['purchaseorder']        = strip_tags($row->purchaseorder);
+
+		$detailrecords['grn']       	   = strip_tags($row->grn);
+
+		$detailrecords['mhepurchaseorder']        = strip_tags($row->mhepurchaseorder);
+
+		$detailrecords['mhegrn']       	   = strip_tags($row->mhegrn);
+
+		$detailrecords['financeentry']        = strip_tags($row->financeentry);
+
+		$detailrecords['gstr']       	   = strip_tags($row->gstr);
+
+		$detailrecords['workorder']        = strip_tags($row->workorder);
+
+		$detailrecords['billing']        = strip_tags($row->billing);
+
+		$detailrecords['fixedassets']        = strip_tags($row->fixedassets);
+
+		$detailrecords['financialstatement']        = strip_tags($row->financialstatement);
+
+		$detailrecords['hr']        = strip_tags($row->hr);
+
+		$detailrecords['status']           = strip_tags($row->status);	
+
+	}
+	return $detailrecords;
+}
+
+
 }
 	
 ?>
