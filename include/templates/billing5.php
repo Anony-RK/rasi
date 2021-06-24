@@ -38,7 +38,7 @@ if($del>0)
 					</ol>
 
 					<a href="editbilling">
-					<button type="button" class="btn btn-primary"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
+					<button type="button" class="btn btn-primary hiddenarea"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
 					</a>
 
 				</div>
@@ -500,7 +500,7 @@ if($del>0)
 
               
 				</div>
-                <div class="row mt-4">
+                <div class="row mt-4 hiddenarea">
                <div class="col-md-12 text-center">
                  <h5><b class=" colors border-bottom">Thankyou For Your Business!</b></h5>
                </div>
@@ -520,8 +520,8 @@ if($del>0)
               <div class="col-md-6"></div>
                             
               <div class="col-md-2 ">						
-							    <button type="submit" name="submitbill" id="submitbill" class="btn btn-primary"  tabindex="73">Submit</button>
-                  <button type="button" class="btn btn-outline-secondary" tabindex="74">Cancel</button>
+							    <button type="submit" name="submitbill" id="submitbill" class="btn btn-primary hiddenarea"  tabindex="73">Submit</button>
+                  <button type="button" class="btn btn-outline-secondary hiddenarea" tabindex="74">Cancel</button>
 					        </div>
                      </div>
                    </div>   
