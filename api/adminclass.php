@@ -3398,6 +3398,362 @@ public function getgodowncreation($mysqli,$idupd)
 	return $detailrecords;
 }
 
+
+
+
+// Add User Creation
+
+
+
+public function addusercreation($mysqli) {
+
+	
+	$date  = date('Y-m-d');
+	
+	if (isset($_POST['role'])) {
+		$role  = mysqli_real_escape_string($mysqli,$_POST['role']);		
+		}
+    if(isset($_POST['firstname'])) {
+	    $firstname  = mysqli_real_escape_string($mysqli,$_POST['firstname']);
+		}
+    if (isset($_POST['lastname'])) {
+		$lastname  = mysqli_real_escape_string($mysqli,$_POST['lastname']);		
+		}
+    if(isset($_POST['fullname'])) {
+	    $fullname  = mysqli_real_escape_string($mysqli,$_POST['fullname']);
+		} 
+	if (isset($_POST['title'])) {
+		$title  = mysqli_real_escape_string($mysqli,$_POST['title']);		
+		}
+	if(isset($_POST['email'])) {
+		$email  = mysqli_real_escape_string($mysqli,$_POST['email']);
+		}
+	if (isset($_POST['username'])) {
+		$username  = mysqli_real_escape_string($mysqli,$_POST['username']);		
+			}
+	if(isset($_POST['password'])) {
+		$password  = mysqli_real_escape_string($mysqli,$_POST['password']);
+		    }
+	if(isset($_POST['companyname'])) {
+			$companyname  = mysqli_real_escape_string($mysqli,$_POST['companyname']);
+			}
+
+			if(isset($_POST['administration'])) {
+				$administration  = $_POST['administration'];
+				}
+				$administration=implode(",",$administration);
+
+			if(isset($_POST['master'])) {
+				$master  = $_POST['master'];
+				}
+		        $master=implode(",",$master);
+
+	if(isset($_POST['profitallocation'])) {
+		$profitallocation = $_POST['profitallocation'];
+
+	}
+	$profitallocation = implode(",",$profitallocation);
+
+
+	if(isset($_POST['purchaseorder'])) {
+			$purchaseorder  = $_POST['purchaseorder'];
+			}
+		$purchaseorder=implode(",",$purchaseorder);
+
+
+		if(isset($_POST['grn'])) {
+			$grn  = $_POST['grn'];
+			}		
+		$grn=implode(",",$grn);
+
+
+		if(isset($_POST['mhepurchaseorder'])) {
+			$mhepurchaseorder  = $_POST['mhepurchaseorder'];
+			}		
+		$mhepurchaseorder=implode(",",$mhepurchaseorder);
+
+
+		if(isset($_POST['mhegrn'])) {
+			$mhegrn  = $_POST['mhegrn'];
+			}		
+		$mhegrn=implode(",",$mhegrn);
+
+		if(isset($_POST['damageandexpiry'])) {
+			$damageandexpiry  = $_POST['damageandexpiry'];
+			}		
+		$damageandexpiry=implode(",",$damageandexpiry);
+
+
+		if(isset($_POST['financeentry'])) {
+			$financeentry  = $_POST['financeentry'];
+			}		
+		$financeentry=implode(",",$financeentry);
+
+
+		if(isset($_POST['gstr'])) {
+			$gstr  = $_POST['gstr'];
+			}		
+		$gstr=implode(",",$gstr);
+
+
+		if(isset($_POST['workorder'])) {
+			$workorder  = $_POST['workorder'];
+			}		
+		$workorder=implode(",",$workorder);
+
+
+		if(isset($_POST['billing'])) {
+			$billing  = $_POST['billing'];
+			}		
+		$billing=implode(",",$billing);
+
+
+		if(isset($_POST['fixedassets'])) {
+			$fixedassets  = $_POST['fixedassets'];
+			}		
+		$fixedassets=implode(",",$fixedassets);
+
+
+		if(isset($_POST['financialstatement'])) {
+			$financialstatement  = $_POST['financialstatement'];
+			}		
+		$financialstatement=implode(",",$financialstatement);
+
+
+		if(isset($_POST['hr'])) {
+			$hr  = $_POST['hr'];
+			}		
+		$hr=implode(",",$hr);
+
+	if(isset($_POST['status']) &&    $_POST['status'] == 'Yes')		
+	{
+		$status=0;
+	}
+	else
+	{
+		$status=1;
+	}
+
+	
+
+	$qry = "INSERT INTO  usercreation (
+		role,firstname,	lastname,fullname,
+		title,email,password,username,companyname,
+		administration,master,profileallocation,purchaseorder,
+		grn,mhepurchaseorder,mhegrn,damageandexpiry,financeentry,
+		gstr,workorder,billing,fixedassets,financialstatement,hr,status) 
+		
+		VALUE (
+	  '$role',
+	  '$firstname',
+	  '$lastname',
+	  '$fullname',	  
+	  '$title',
+	  '$email',
+	  '$password',
+	  '$username',
+	  '$companyname',
+	  '$administration',
+	  '$master',
+	  '$profitallocation',
+	  '$purchaseorder',
+	  '$grn',
+	  '$mhepurchaseorder',
+	  '$mhegrn',
+	  '$damageandexpiry',
+	  '$financeentry',
+	  '$gstr',
+	  '$workorder',
+	  '$billing',
+	  '$fixedassets',
+	  '$financialstatement',
+	  '$hr',
+	  '$status'
+	)";
+
+	$res =$mysqli->query($qry)or die("Error in Query".$mysqli->error);
+	$id = 0;
+	$id = $mysqli->insert_id;
+
+	return $id; 
+}
+
+
+
+
+
+public function updateusercreation($mysqli,$id) {
+
+
+	$date  = date('Y-m-d');
+	
+	if (isset($_POST['role'])) {
+		$role  = mysqli_real_escape_string($mysqli,$_POST['role']);		
+		}
+    if(isset($_POST['firstname'])) {
+	    $firstname  = mysqli_real_escape_string($mysqli,$_POST['firstname']);
+		}
+    if (isset($_POST['lastname'])) {
+		$lastname  = mysqli_real_escape_string($mysqli,$_POST['lastname']);		
+		}
+    if(isset($_POST['fullname'])) {
+	    $fullname  = mysqli_real_escape_string($mysqli,$_POST['fullname']);
+		} 
+	if (isset($_POST['title'])) {
+		$title  = mysqli_real_escape_string($mysqli,$_POST['title']);		
+		}
+	if(isset($_POST['email'])) {
+		$email  = mysqli_real_escape_string($mysqli,$_POST['email']);
+		}
+	if (isset($_POST['username'])) {
+		$username  = mysqli_real_escape_string($mysqli,$_POST['username']);		
+			}
+	if(isset($_POST['password'])) {
+		$password  = mysqli_real_escape_string($mysqli,$_POST['password']);
+		    }
+	if(isset($_POST['companyname'])) {
+			$companyname  = mysqli_real_escape_string($mysqli,$_POST['companyname']);
+			}
+
+			if(isset($_POST['administration'])) {
+				$administration  = $_POST['administration'];
+				}
+				$administration=implode(",",$administration);
+
+			if(isset($_POST['master'])) {
+				$master  = $_POST['master'];
+				}
+		        $master=implode(",",$master);
+
+	if(isset($_POST['profitallocation'])) {
+		$profitallocation = $_POST['profitallocation'];
+
+	}
+	$profitallocation = implode(",",$profitallocation);
+
+
+	if(isset($_POST['purchaseorder'])) {
+			$purchaseorder  = $_POST['purchaseorder'];
+			}
+		$purchaseorder=implode(",",$purchaseorder);
+
+
+		if(isset($_POST['grn'])) {
+			$grn  = $_POST['grn'];
+			}		
+		$grn=implode(",",$grn);
+
+
+		if(isset($_POST['mhepurchaseorder'])) {
+			$mhepurchaseorder  = $_POST['mhepurchaseorder'];
+			}		
+		$mhepurchaseorder=implode(",",$mhepurchaseorder);
+
+
+		if(isset($_POST['mhegrn'])) {
+			$mhegrn  = $_POST['mhegrn'];
+			}		
+		$mhegrn=implode(",",$mhegrn);
+
+		if(isset($_POST['damageandexpiry'])) {
+			$damageandexpiry  = $_POST['damageandexpiry'];
+			}		
+		$damageandexpiry=implode(",",$damageandexpiry);
+
+
+		if(isset($_POST['financeentry'])) {
+			$financeentry  = $_POST['financeentry'];
+			}		
+		$financeentry=implode(",",$financeentry);
+
+
+		if(isset($_POST['gstr'])) {
+			$gstr  = $_POST['gstr'];
+			}		
+		$gstr=implode(",",$gstr);
+
+
+		if(isset($_POST['workorder'])) {
+			$workorder  = $_POST['workorder'];
+			}		
+		$workorder=implode(",",$workorder);
+
+
+		if(isset($_POST['billing'])) {
+			$billing  = $_POST['billing'];
+			}		
+		$billing=implode(",",$billing);
+
+
+		if(isset($_POST['fixedassets'])) {
+			$fixedassets  = $_POST['fixedassets'];
+			}		
+		$fixedassets=implode(",",$fixedassets);
+
+
+		if(isset($_POST['financialstatement'])) {
+			$financialstatement  = $_POST['financialstatement'];
+			}		
+		$financialstatement=implode(",",$financialstatement);
+
+
+		if(isset($_POST['hr'])) {
+			$hr  = $_POST['hr'];
+			}		
+		$hr=implode(",",$hr);
+
+	if(isset($_POST['status']) &&    $_POST['status'] == 'Yes')		
+	{
+		$status=0;
+	}
+	else
+	{
+		$status=1;
+	}
+
+
+
+
+
+
+	
+
+	$updateQry = 'UPDATE  usercreation  SET 
+	role="'.strip_tags($role).'" ,
+	firstname="'.strip_tags($firstname).'" ,
+	lastname="'.strip_tags($lastname).'" ,
+	fullname="'.strip_tags($fullname).'" ,	
+	title="'.strip_tags($title).'" ,
+	emailpassword="'.strip_tags($emailpassword).'" ,
+	password="'.strip_tags($password).'" ,
+	companyname="'.strip_tags($companyname).'" ,
+	administration="'.strip_tags($administration).'" ,
+	master="'.strip_tags($master).'" ,
+	profitallocation="'.strip_tags($profitallocation).'" ,
+	allowstock="'.strip_tags($purchaseorder).'" ,
+	grn="'.strip_tags($grn).'" ,
+	mhepurchaseorder="'.strip_tags($mhepurchaseorder).'" ,
+	mhegrn="'.strip_tags($mhegrn).'" ,
+	financeentry="'.strip_tags($financeentry).'" ,
+	gstr="'.strip_tags($gstr).'" ,
+	workorder="'.strip_tags($workorder).'" ,
+	billing="'.strip_tags($billing).'" ,
+	fixedassets="'.strip_tags($fixedassets).'" ,
+	financialstatement="'.strip_tags($financialstatement).'" ,
+	hr="'.strip_tags($hr).'" ,
+	status="'.$status.'" WHERE id="'.mysqli_real_escape_string($mysqli,$id).'"';  
+   
+   $res =$mysqli->query($updateQry)or die("Error in in update Query!.".$mysqli->error); 
+   
+
+}
+
+
+public function deleteusercreation($mysqli, $id){
+	$date  = date('Y-m-d'); 
+	$deletestock = "UPDATE usercreation set status='1' WHERE id='".strip_tags($id)."' ";
+	$deletestockres=$mysqli->query($deletestock) or die("Error in delete query".$mysqli->error);
+}
 }
 	
 ?>

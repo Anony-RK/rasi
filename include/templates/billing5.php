@@ -362,17 +362,15 @@ if($del>0)
                         <p>Total Amount</p>
                         <div class="input-group mb-3 w-50">
                           <input type="number" class="form-control w-50 " placeholder="0" readonly id="totalamount" name="totalamount">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Discount</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="totaldiscount" name="totaldiscount">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
-                      <div class="total d-flex justify-content-between hidestate" id="hidestate">
+                      <!-- <div class="total d-flex justify-content-between hidestate" id="hidestate">
                         <p>Total CGST</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalcgst" name="totalcgst">
@@ -385,28 +383,25 @@ if($del>0)
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="totalsgst" name="totalsgst">
                           <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
-                      </div>
+                      </div> -->
                       
                       
                       <div class="total d-flex justify-content-between" id="alltotal">
-                        <p>Other Changes</p>
+                        <p>Other Charges</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" id="otherchanges" name="otherchanges">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Invoice Value</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " readonly placeholder="0" id="totalinvoicevalue" name="totalinvoicevalue">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Invoice Value (In Words)</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " id="invoiceinword" name="invoiceinword">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                     </div>
@@ -420,43 +415,38 @@ if($del>0)
                         <p>Total Amount</p>
                         <div class="input-group mb-3 w-50">
                           <input type="number" class="form-control w-50 " placeholder="0" readonly id="igsttotalamount" name="igsttotalamount">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Discount</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="igsttotaldiscount" name="igsttotaldiscount">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
-                      <div class="total d-flex justify-content-between hideothers" id="hideothers">
+                      <!-- <div class="total d-flex justify-content-between hideothers" id="hideothers">
                         <p>IGST</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" readonly id="igsttotaligst" name="igsttotaligst">
                           <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
-                      </div>
+                      </div> -->
                       
                       <div class="total d-flex justify-content-between" id="alltotal">
-                        <p>Other Changes</p>
+                        <p>Other Charges</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " placeholder="0" id="igstotherchanges" name="igstotherchanges">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Invoice Value</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " readonly placeholder="0" id="igsttotalinvoicevalue" name="igsttotalinvoicevalue">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                       <div class="total d-flex justify-content-between" id="alltotal">
                         <p>Total Invoice Value (In Words)</p>
                         <div class="input-group mb-3 w-50">
                         <input type="text" class="form-control w-50 " id="igstinvoiceinword" name="invoiceinword">
-                          <span class="input-group-text" id="basic-addon2">.Rs</span>
                         </div>
                       </div>
                     </div>
@@ -497,12 +487,8 @@ if($del>0)
                <div class="row gutters mt-4 justify-content-between">        
                    <div class="col-md-6 ">
                         <h5  class="colors">Terms And Conditions</h5>
+                        <textarea cols="60" rows="10"  name="terms" id="terms"></textarea>
 
-                        <p>1.   E. & O .E</p>
-                        <p>2. Goods Once Sold Will not be taken back or exchanged</p>
-                        <p>3. Supplier is not responcible for any damaged of goods in transit</p>
-                        <p></p>
-                        <p></p>
                    </div>
                     <div class="col-md-6 text-right">
                         <p>Name Of Authorized Signatory</p>

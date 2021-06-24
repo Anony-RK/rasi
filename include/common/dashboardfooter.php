@@ -51,6 +51,7 @@
 		<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript" src="jsd/datatables.min.js"></script>
 
@@ -515,7 +516,36 @@
 		[10, 25, 50, "All"]
 	]
 	});
+
+
+	// usercreation
+
+	var usercreation_info = $('#usercreation_info').DataTable({
+		"order": [[ 0, "desc" ]],
+		'processing': true,
+		'serverSide': true,
+		'serverMethod': 'post',
+		//'searching': false, // Remove default Search Control
+		'ajax': {
+			'url':'ajaxusercreation.php',
+			'data': function(data){
+                var search = $('#search').val();
+							// Append to data                           
+		  	data.search      = search;
+			}
+		},
+		
+	dom: 'lBfrtip',
+	buttons: [
+		'csv', 'colvis',
+	],
+	"lengthMenu": [
+		[10, 25, 50, -1],
+		[10, 25, 50, "All"]
+	]
+	});
 	$('#search').change(function(){
+		usercreation_info.draw();
 		billsetting_info.draw();
 		billing5_info.draw();
 		billing4_info.draw();
@@ -571,4 +601,6 @@
 		<script src="js/godownoutward.js"></script>
 <?php } if($current_page == 'branchoutward') { ?>
 		<script src="js/branchoutward.js"></script>
+<?php } if($current_page == 'usercreation') { ?>
+		<script src="js/usercreation.js"></script>
 <?php } ?>

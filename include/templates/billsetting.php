@@ -62,7 +62,7 @@ if($idupd>0)
 <!-- Page header start -->
 <div class="page-header">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item">Settings</li>
+						<li class="breadcrumb-item"> Bill Settings</li>
 					</ol>
 					<a href="editbillsetting">
 					<button type="button" class="btn btn-primary"><span class="icon-border_color"></span>&nbsp Edit Setting</button>
@@ -168,39 +168,39 @@ if($idupd>0)
    <div class="row mt-4">
    <div class="col md-2"></div>
      <div class="col-md-8 mt-2 ">
-     <p class="align-items-center"><b>Select Billing Type</b> <span class="text-danger">*</span></p></br>
+     <p class="align-items-center"><b>Select Invoice Type</b> <span class="text-danger">*</span></p></br>
 
         <div class="d-flex ">
             <div class="form-check d-flex ">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault1" name="billing"  value="1" <?php if(isset($billtypes)) { if($billtypes == "1" ) echo 'checked'; }  ?> >
+                <input class="form-check-input" type="radio"  id="model1" name="billing"  value="1" <?php if(isset($billtypes)) { if($billtypes == "1" ) echo 'checked'; }  ?> >
                 <label class="form-check-label ml-2" for="flexRadioDefault1">
-                   Billing 1
+                   Model 1
                 </label>
                 </div>
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault2" name="billing" value="2"  <?php if(isset($billtypes)) { if($billtypes == "2" ) echo 'checked'; }  ?>>
+                <input class="form-check-input" type="radio"  id="model2" name="billing" value="2"  <?php if(isset($billtypes)) { if($billtypes == "2" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault2">
-                    Billing 2
+                    Model 2
                 </label>
                 </div>
 
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault3" name="billing" value="3"  <?php if(isset($billtypes)) { if($billtypes == "3" ) echo 'checked'; }  ?>>
+                <input class="form-check-input" type="radio"  id="model3" name="billing" value="3"  <?php if(isset($billtypes)) { if($billtypes == "3" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault1">
-                    Billing 3
+                    Model 3
                 </label>
                 </div>
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault4" name="billing" value="4"  <?php if(isset($billtypes)) { if($billtypes == "4" ) echo 'checked'; }  ?>>
+                <input class="form-check-input" type="radio"  id="model4" name="billing" value="4"  <?php if(isset($billtypes)) { if($billtypes == "4" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault2">
-                     Billing 4
+                     Model 4
                 </label>
                 </div>
 
                 <div class="form-check d-flex">
-                <input class="form-check-input" type="radio"  id="flexRadioDefault5" name="billing" value="5" <?php if(isset($billtypes)) { if($billtypes == "5" ) echo 'checked'; }  ?>>
+                <input class="form-check-input" type="radio"  id="model5" name="billing" value="5" <?php if(isset($billtypes)) { if($billtypes == "5" ) echo 'checked'; }  ?>>
                 <label class="form-check-label ml-2" for="flexRadioDefault1">
-                   Billing 5
+                   Model 5
                 </label>
                 </div>          
             </div>           
@@ -222,6 +222,56 @@ if($idupd>0)
     </div>
 
 </div>
+
+<style>
+    .borders{
+        border:none;
+        outline:none;
+        margin-top:30px;
+        padding:10px 20px ;
+        color:#fff;
+        font-weight:600;
+        
+    }
+    .borders:hover{
+        background:black;
+    }
+
+</style>
+
+<script>
+// document.getElementTagName("p").innerHTML = "shaiudfhiuafiusfiudfiusdfufd";
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div   name="viewmodel1">
+                  <button  class="bg-primary borders" id="viewmodel1" class="viewmodel1" value="View Model 1">View Model 1</button> 
+                  <div id="showmodel1"></div>
+            </div>
+            <div class="model2" name="model2">
+                 <input type="submit" class="bg-primary borders" id="viewmodel2" value="View Model 2"> 
+                 <div id="showmodel2"></div>
+            </div>
+            <div class="model3"  name="model3">
+                 <input type="submit" class="bg-primary borders" id="viewmodel3" value="View Model 3"> 
+                 <div id="showmodel3"></div>
+            </div>
+            <div class="model4"  name="model4">
+                 <input type="submit" class="bg-primary borders" id="viewmodel4" value="View Model 4"> 
+                 <div id="showmodel4"></div>
+            </div>
+            <div class="model5"  name="model5">
+                 <input type="submit" class="bg-primary borders" id="viewmodel5" value="View Model 5"> 
+                 <div id="showmodel5"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    
                     	 <div class="row ">
                            <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
                               <div class="custom-control custom-checkbox mt-4">
@@ -243,24 +293,16 @@ if($idupd>0)
 							<button type="submit" name="submitbillsetting" id="submitbillsetting" class="btn btn-primary"  tabindex="73">Submit</button>
 						    <button type="button" class="btn btn-outline-secondary" tabindex="74">Cancel</button>
 					        </div>                     
-                        </div>
-                    
+                        </div>                  
                     </div>
-
-
-
-
-
                     </div>  
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 </form>
 </div>
-
 
 
 

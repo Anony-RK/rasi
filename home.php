@@ -234,7 +234,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
                 <?php   } ?>
 
 
-				 <!-- Finance -->
+				 <!-- billsetting -->
 				 <?php   if($current_page == 'billsetting') { ?>
 				<?php include "include/templates/billsetting.php"?>
                 <?php   } ?>
@@ -283,6 +283,15 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 				<?php include "include/templates/godownoutward.php"?>
                 <?php   } ?>
 
+
+
+					<!-- usercreation-->
+					<?php   if($current_page == 'usercreation') { ?>
+				<?php include "include/templates/usercreation.php"?>
+                <?php   } ?>
+				<?php   if($current_page == 'editusercreation') { ?>
+				<?php include "include/templates/editusercreation.php"?>
+                <?php   } ?>
 
 				
 			</div>

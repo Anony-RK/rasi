@@ -79,7 +79,6 @@
 				<!-- Main container start -->
 				<div class="main-container">
 
-
 <!--------form start-->
 <form id = "taxmaster" name="taxmaster" action="" method="post" enctype="multipart/form-data"> 
 <input type="hidden" class="form-control" value="<?php if(isset($id )) echo $id ; ?>"  id="id" name="id" aria-describedby="id" placeholder="Enter id">
