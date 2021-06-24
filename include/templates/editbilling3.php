@@ -72,9 +72,9 @@ if($mscid==3)
 											  <th>TotalCGST</th>
 											  <th>TotalSGST</th>
 											  <th>TotalIGST</th>
-											  <th>Other Changes</th>
+											  <th>Other Charges</th>
 											  <th>Total Invoice </th>
-											  <th>Basis</th>
+											  <th>Basic</th>
 											  
 											  <!--<th>Esicno</th>
 											  <th>loginshortername</th> -->

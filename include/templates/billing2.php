@@ -7,14 +7,14 @@ $id=0;
   if(isset($_POST['others']) &&  isset($_POST['others']) == true) {
 		$addbilling = $userObj->addbilling($mysqli);   
   ?>
-       <script>location.href='<?php echo $HOSTPATH;  ?>editbilling2&msc=1';</script> 
+       <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
         <?php
 }
  elseif(isset($_POST['tamilnadu']) &&  isset($_POST['tamilnadu']) == true )
 {
   $addcgst = $userObj->addcgst($mysqli);   
   ?>
-      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling2&msc=1';</script> 
+      <script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=1';</script> 
       <?php
 }
 }
@@ -28,7 +28,7 @@ if($del>0)
 {
 	$deletebilliing = $userObj->deletebilliing($mysqli,$del); 
 	?>
-	<script>location.href='<?php echo $HOSTPATH;  ?>editbilling2&msc=3';</script>
+	<script>location.href='<?php echo $HOSTPATH;  ?>editbilling&msc=3';</script>
 <?php	} ?>
 
 <!-- Page header start -->
@@ -37,7 +37,7 @@ if($del>0)
 						<li class="breadcrumb-item">Billing Master</li>
 					</ol>
 
-					<a href="editbilling2">
+					<a href="editbilling">
 					<button type="button" class="btn btn-primary"><span class="icon-border_color"></span>&nbsp Edit Billing</button>
 					</a>
 

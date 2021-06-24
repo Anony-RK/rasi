@@ -5,7 +5,7 @@
 						<li class="breadcrumb-item">Edit Billing2</li>
 					</ol>					
 					<a href="billing2">
-					<button type="button"  tabindex="1" id="submitbranchbtn" name="submitbranchnew"   class="btn btn-primary"><span class="icon-add"></span>&nbsp Add Bill</button>
+					  <button type="button"  tabindex="1" id="submitbranchbtn" name="submitbranchnew"   class="btn btn-primary"><span class="icon-add"></span>&nbsp Add Bill</button>
 					</a>
 				</div>
 				<!-- Page header end -->
@@ -71,9 +71,9 @@ if($mscid==3)
 											  <th>TotalCGST</th>
 											  <th>TotalSGST</th>
 											  <th>TotalIGST</th>
-											  <th>Other Changes</th>
+											  <th>Other Charges</th>
 											  <th>Total Invoice </th>
-											  <th>Basis</th>
+											  <th>Basic</th>
 											  
 											  <!--<th>Esicno</th>
 											  <th>loginshortername</th> -->
